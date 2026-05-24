@@ -27,9 +27,14 @@ export function Navigation() {
       <div className="container nav-inner">
         <Link href="/" className="nav-brand" aria-label="Legatio 4.0 home">
           <Image src="/images/logo-emblem.png" alt="" width={72} height={72} priority />
-          <span className="name">
-            legatio<span className="ver">4.0</span>
-          </span>
+          <Image
+            src="/images/logo-wordmark.png"
+            alt="Legatio 4.0"
+            width={660}
+            height={150}
+            priority
+            className="wordmark"
+          />
         </Link>
         <nav className="nav-links" aria-label="Primary">
           {LINKS.map((l) => {

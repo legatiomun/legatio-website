@@ -14,9 +14,13 @@ export function Colophon({ contextLine = "Edition 4 · Printed in cream & ink" }
           <div>
             <div className="colophon-brand">
               <Image src="/images/logo-emblem.png" alt="" width={112} height={112} />
-              <span className="name">
-                legatio<span className="ver">4.0</span>
-              </span>
+              <Image
+                src="/images/logo-wordmark.png"
+                alt="Legatio 4.0"
+                width={660}
+                height={150}
+                className="wordmark"
+              />
             </div>
             <div className="desc">
               The flagship Model United Nations conference of Delhi Public School, Siliguri.
