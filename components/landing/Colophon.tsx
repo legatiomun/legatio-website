@@ -65,7 +65,6 @@ export function Colophon({ contextLine = "Edition 4 · Printed in cream & ink" }
         <div className="colophon-bot">
           <span>© 2026 · DPS Siliguri</span>
           <span>{contextLine}</span>
-          <span>Set in EB Garamond, Inter &amp; Yatra One</span>
         </div>
       </div>
     </footer>
