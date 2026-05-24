@@ -13,7 +13,7 @@ export function Colophon({ contextLine = "Edition 4 · Printed in cream & ink" }
         <div className="colophon-top">
           <div>
             <div className="colophon-brand">
-              <Image src="/images/logo.png" alt="" width={112} height={112} />
+              <Image src="/images/logo-emblem.png" alt="" width={112} height={112} />
               <span className="name">
                 legatio<span className="ver">4.0</span>
               </span>

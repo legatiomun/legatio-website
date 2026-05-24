@@ -26,7 +26,7 @@ export function Navigation() {
     <header className="nav">
       <div className="container nav-inner">
         <Link href="/" className="nav-brand" aria-label="Legatio 4.0 home">
-          <Image src="/images/logo.png" alt="" width={72} height={72} priority />
+          <Image src="/images/logo-emblem.png" alt="" width={72} height={72} priority />
           <span className="name">
             legatio<span className="ver">4.0</span>
           </span>
