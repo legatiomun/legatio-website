@@ -112,18 +112,6 @@ img { display: block; max-width: 100%; }
   margin-left: 6px;
   letter-spacing: 0;
 }
-.nav-brand .wordmark {
-  height: 32px;
-  width: auto;
-  object-fit: contain;
-  display: block;
-}
-.colophon-brand .wordmark {
-  height: 44px;
-  width: auto;
-  object-fit: contain;
-  display: block;
-}
 .colophon-brand .name .ver {
   color: var(--ink);
   font-family: var(--font-serif), serif;
