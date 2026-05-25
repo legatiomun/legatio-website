@@ -38,7 +38,6 @@ export const SECRETARIAT: Officer[] = [
     role: "MUN Co-ordinator",
     group: "Patrons",
     photo: "/team/moumita-debnath.jpg",
-    photoPosition: "center 20%",
     quote: "The standard we set begins long before the conch is blown.",
   },
   {
