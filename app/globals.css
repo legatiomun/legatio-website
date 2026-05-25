@@ -2308,3 +2308,291 @@ img { display: block; max-width: 100%; }
     scroll-behavior: auto !important;
   }
 }
+
+/* ──────────────────────────────────────────────────────────────────
+ * MOBILE — overrides for ≤ 880 / ≤ 720 / ≤ 480.
+ * Desktop layouts above are untouched.
+ * ──────────────────────────────────────────────────────────────── */
+
+/* Hamburger (hidden by default — shows ≤ 880) */
+.nav-toggle { display: none; }
+
+@media (max-width: 880px) {
+  .nav-toggle {
+    display: inline-grid;
+    place-items: center;
+    width: 40px; height: 40px;
+    background: transparent;
+    border: 1px solid var(--line-2);
+    cursor: pointer;
+    padding: 0;
+    margin-left: 4px;
+    transition: border-color .25s;
+  }
+  .nav-toggle:hover { border-color: var(--ink); }
+  .nav-toggle span {
+    display: block;
+    width: 18px; height: 1.5px;
+    background: var(--ink);
+    margin: 2px 0;
+    transition: transform .3s cubic-bezier(.7,0,.2,1), opacity .25s;
+    transform-origin: center;
+  }
+  .nav-open .nav-toggle span:nth-child(1) { transform: translateY(5.5px) rotate(45deg); }
+  .nav-open .nav-toggle span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  .nav-open .nav-toggle span:nth-child(3) { transform: translateY(-5.5px) rotate(-45deg); }
+
+  /* Drawer holds the links + register CTA, so hide the duplicates in the bar */
+  .nav .nav-mono { display: none; }
+  .nav .nav-right .nav-cta { display: none; }
+  .nav-right { gap: 10px; }
+}
+
+/* Drawer — invisible on desktop, full-screen panel on mobile */
+.nav-drawer {
+  position: fixed;
+  inset: 68px 0 0 0;
+  background: var(--paper);
+  z-index: 45;
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform .4s cubic-bezier(.7,0,.2,1), opacity .25s;
+  border-top: 1px solid var(--line);
+  overflow-y: auto;
+}
+.nav-drawer.is-open {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+.nav-drawer ul {
+  list-style: none;
+  margin: 0;
+  padding: 14px 22px 32px;
+  display: flex;
+  flex-direction: column;
+}
+.nav-drawer li { border-bottom: 1px solid var(--line); }
+.nav-drawer li:last-child { border-bottom: 0; }
+.nav-drawer li a {
+  display: flex; align-items: baseline; justify-content: space-between;
+  padding: 22px 6px;
+  font-family: var(--font-serif), serif;
+  font-size: 26px;
+  line-height: 1;
+  color: var(--ink);
+  transition: color .2s;
+}
+.nav-drawer li a.active { color: var(--accent); }
+.nav-drawer li a:hover { color: var(--accent); }
+.nav-drawer .nav-drawer-cta { border-bottom: 0; margin-top: 12px; }
+.nav-drawer .nav-drawer-cta a {
+  display: flex; align-items: center; justify-content: space-between;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-mono), monospace;
+  font-size: 13px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 20px 22px;
+  transition: background .2s;
+}
+.nav-drawer .nav-drawer-cta a:hover { background: var(--accent); color: var(--paper); }
+.nav-drawer .nav-drawer-meta {
+  margin-top: 18px;
+  padding: 0 6px;
+  font-family: var(--font-mono), monospace;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--mute);
+  border-bottom: 0;
+}
+/* No drawer on desktop */
+@media (min-width: 881px) {
+  .nav-drawer { display: none; }
+}
+
+/* General mobile tightening */
+@media (max-width: 720px) {
+  /* Container — slim padding */
+  .container { padding: 0 20px; }
+
+  /* Section vertical padding — tighter on small screens */
+  .hero { padding: 110px 0 60px; min-height: auto; }
+  .prelude { padding: 56px 0 60px; }
+  .diptych-section { padding: 56px 0; }
+  .committees { padding: 56px 0; }
+  .cantos { padding: 56px 0; }
+  .voice { padding: 70px 0; }
+  .register { padding: 70px 0 80px; }
+  .page-header { padding: 110px 0 50px; }
+  .page-header-compact { padding: 110px 0 40px; }
+  .cta-banner { padding: 56px 0 64px; }
+  .cta-banner h2 { font-size: clamp(28px, 8vw, 44px); }
+  .colophon { padding: 48px 0 28px; }
+  .day-stage { padding: 50px 0 32px; }
+
+  /* Smaller display sizes — preserve clamp pattern but drop the min */
+  .page-header h1 { font-size: clamp(38px, 11vw, 64px); }
+  .page-header-compact h1 { font-size: clamp(34px, 10vw, 56px); }
+  .page-header .lede { font-size: 16px; }
+  .prelude h2 { font-size: clamp(32px, 9vw, 52px); }
+  .diptych-head h2 { font-size: clamp(30px, 8vw, 48px); }
+  .index-head h2 { font-size: clamp(28px, 8vw, 44px); }
+  .cantos-head h2 { font-size: clamp(28px, 8vw, 44px); }
+  .voice .q { font-size: clamp(22px, 6.4vw, 36px); }
+  .register h2 { font-size: clamp(30px, 9vw, 52px); }
+
+  /* Diptych — calm the giant W/P lettering */
+  .panel { padding: 36px 24px; min-height: auto; }
+  .panel .label { font-size: clamp(52px, 16vw, 80px); }
+  .panel p { font-size: 17px; margin-top: 22px; }
+  .panel .chakra-bg { width: 280px; height: 280px; right: -90px; bottom: -90px; }
+
+  /* Hero — tighten emblem + meta */
+  .hero .chakra-bg { width: 720px; height: 720px; opacity: 0.035; }
+  .hero-top-strip { font-size: 9px; padding: 0 0 14px; gap: 14px; }
+  .hero-emblem { width: min(420px, 90vw); margin: 22px auto 0; }
+  .hero-shloka { margin: 36px auto 0; }
+  .hero-shloka .trans { font-size: 16px; line-height: 1.5; }
+  .hero-meta { margin: 36px auto 0; gap: 14px; padding-top: 24px; }
+  .hero-meta .col .v { font-size: 19px; }
+  .hero-meta .col .v small { font-size: 12px; }
+  .hero-actions { margin: 32px auto 0; flex-direction: column; align-items: stretch; gap: 10px; }
+  .hero-actions .btn { justify-content: center; padding: 14px 22px; font-size: 11px; }
+  .scroll-cue { margin: 36px auto 0; }
+
+  /* Prelude stats — keep 4 cols but smaller numbers */
+  .prelude .stats { margin-top: 28px; }
+  .prelude .stats .n { font-size: 30px; }
+  .prelude .stats > div { padding: 16px 8px; }
+  .prelude .body { font-size: 17px; line-height: 1.55; }
+  .prelude .body .lead::first-letter { font-size: 4em; padding-right: 10px; }
+
+  /* Index of committees on landing */
+  .index-row { padding: 14px 4px; gap: 10px; grid-template-columns: 22px 1fr 110px; }
+  .index-row .leader { display: none; }
+  .index-row .name { font-size: 17px; }
+
+  /* Voice block */
+  .voice .tag { font-size: 10px; margin-bottom: 24px; }
+  .voice .attr { margin-top: 28px; }
+
+  /* Register on landing dark slab */
+  .register-inner { gap: 30px; }
+  .register-actions a { padding: 18px 18px; font-size: 12px; }
+  .register .lede { font-size: 17px; }
+
+  /* Colophon — looser layout */
+  .colophon-top { gap: 28px; padding-bottom: 28px; }
+  .colophon-brand img { width: 44px; height: 44px; }
+  .colophon-brand .name { font-size: 30px; }
+  .colophon-bot { font-size: 9px; letter-spacing: 0.16em; }
+  .colophon-shloka { margin-top: 28px; font-size: 16px; }
+
+  /* Page-header crumb */
+  .page-header .crumb { margin-bottom: 22px; font-size: 10px; gap: 10px; }
+  .page-header .sub-grid { margin-top: 32px; }
+
+  /* Committee cards on /committees */
+  .committee { padding: 24px 0; gap: 20px; }
+  .c-emblem { padding: 24px; }
+  .c-emblem .stamp { font-size: 9px; padding: 2px 6px; top: 10px; right: 10px; }
+  .c-name { font-size: clamp(22px, 6.5vw, 32px); margin-bottom: 16px; }
+  .c-agenda { font-size: 16px; line-height: 1.5; }
+  .c-meta-row { gap: 10px; margin-bottom: 14px; }
+  .c-subtitle { margin-left: 0; font-size: 14px; }
+  .c-actions { margin-top: 18px; gap: 12px; }
+
+  /* Tier section / group section */
+  .tier-section, .group { padding: 56px 0 30px; }
+  .tier-head, .group-head { margin-bottom: 28px; padding-bottom: 22px; gap: 12px; }
+  .tier-head h2, .group-head h2 { font-size: clamp(32px, 9vw, 48px); }
+  .tier-head .roman, .group-head .roman { font-size: clamp(64px, 18vw, 110px); }
+
+  /* Schedule day tabs / day head */
+  .day-tabs-wrap { top: 64px; }
+  .day-head { padding-bottom: 22px; margin-bottom: 28px; gap: 12px; }
+  .day-head .roman { font-size: clamp(64px, 18vw, 110px); }
+  .day-head h2 { font-size: clamp(30px, 9vw, 48px); }
+  .day-head .motif { font-size: 17px; }
+
+  /* Patrons cards */
+  .patron { padding: 28px 22px; min-height: auto; }
+  .patron .portrait { width: 96px; height: 96px; font-size: 36px; margin-bottom: 20px; }
+  .patron .name { font-size: 24px; margin-bottom: 16px; }
+  .patron .quote { font-size: 15px; }
+
+  /* Secretariat USG grid */
+  .usg { padding: 22px 18px; }
+  .usg .portrait-sm { width: 56px; height: 56px; font-size: 20px; margin-bottom: 14px; }
+  .usg .role { font-size: 16px; }
+
+  /* EB grid */
+  .eb { padding: 18px 12px; gap: 14px; grid-template-columns: 52px 1fr auto; }
+  .eb .portrait-md { width: 52px; height: 52px; font-size: 12px; }
+  .eb .role-line { font-size: 17px; }
+  .eb .link { font-size: 9px; }
+
+  /* Registration form */
+  .intro h1 { font-size: clamp(32px, 10vw, 56px); }
+  .intro .lede { font-size: 15px; }
+  .intro-chips { margin-top: 22px; }
+  .step-head h2 { font-size: clamp(22px, 7vw, 32px); }
+  .form-foot { padding: 14px 18px; }
+  .form-foot .next { padding: 10px 16px; font-size: 11px; }
+  .form-foot .pgr { font-size: 10px; }
+
+  /* Payment block */
+  .pay-amount { padding: 22px 18px; }
+  .pay-amount .pay-value { font-size: clamp(34px, 10vw, 52px); }
+  .pay-qr { padding: 18px; }
+  .pay-qr img { width: 150px; height: 150px; }
+
+  /* Cantos / schedule slot tightening */
+  .canto { padding: 32px 22px 36px; }
+  .canto .initial { font-size: 84px; margin-right: 12px; }
+  .canto h3 { font-size: 30px; }
+  .canto li { padding: 10px 0; }
+  .slot .ev h3 { font-size: clamp(17px, 5vw, 22px); }
+}
+
+@media (max-width: 480px) {
+  .container { padding: 0 16px; }
+  .nav-inner { padding: 0; }
+  .nav-brand img { width: 32px; height: 32px; }
+  .nav-brand .name { font-size: 20px; }
+
+  /* Even more compact on phones */
+  .page-header { padding: 100px 0 36px; }
+  .page-header h1 { font-size: 34px; }
+  .page-header-compact h1 { font-size: 30px; }
+  .hero-top-strip { display: none; }
+  .hero-emblem { margin: 14px auto 0; }
+  .hero-shloka .trans em { display: inline; }
+
+  .panel { padding: 28px 20px; }
+  .panel .label { font-size: 56px; }
+  .panel p { font-size: 16px; }
+  .panel .topline { font-size: 9px; }
+
+  .voice { padding: 56px 0; }
+  .voice .q { font-size: 22px; }
+
+  .patron { padding: 24px 20px; }
+  .patron .name { font-size: 22px; }
+  .patron .quote { font-size: 14px; padding-left: 12px; }
+
+  .canto .initial { font-size: 64px; }
+  .canto h3 { font-size: 26px; }
+
+  .intro-chips .chip { padding: 6px 8px; font-size: 9px; }
+  .form-body { padding: 24px 18px 22px; }
+  .step-head h2 { font-size: 22px; }
+  .form-foot { padding: 12px 16px; flex-wrap: wrap; gap: 10px; }
+  .form-foot .pgr { order: 3; flex: 1 1 100%; text-align: center; }
+
+  .colophon-top { grid-template-columns: 1fr !important; gap: 22px; }
+}
