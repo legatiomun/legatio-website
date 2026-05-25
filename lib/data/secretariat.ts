@@ -33,10 +33,12 @@ export const SECRETARIAT: Officer[] = [
     quote: "Where words become weapons of wisdom and dialogue becomes the pathway to peace.",
   },
   {
-    id: "moumita",
-    name: "Moumita Ma'am",
+    id: "moumita-debnath",
+    name: "Moumita Debnath",
     role: "MUN Co-ordinator",
     group: "Patrons",
+    photo: "/team/moumita-debnath.jpg",
+    photoPosition: "center 20%",
     quote: "The standard we set begins long before the conch is blown.",
   },
   {
