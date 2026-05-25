@@ -6,7 +6,6 @@ import { PageHeader } from "@/components/PageHeader";
 import { LETTERS } from "@/lib/data/letters";
 import { EDITIONS } from "@/lib/data/legacy";
 import { Reveal, RevealStagger, StaggerItem, WordReveal } from "@/components/motion/Reveal";
-import { Magnetic } from "@/components/motion/Magnetic";
 
 export const metadata: Metadata = {
   title: "About — Legatio 4.0",
@@ -163,22 +162,20 @@ export default function AboutPage() {
               </h2>
             </Reveal>
             <Reveal delay={0.2}>
-              <div className="mt-10 flex flex-wrap justify-center gap-3">
-                <Magnetic strength={0.18}>
-                  <Link
-                    href="/committees"
-                    className="group inline-flex items-center gap-2 border border-ink bg-ink px-6 py-3 text-sm text-paper hover:bg-accent hover:border-accent"
-                  >
-                    View committees
-                    <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">→</span>
-                  </Link>
-                </Magnetic>
-                <Link
-                  href="/register"
-                  className="group inline-flex items-center gap-2 border border-line px-6 py-3 text-sm text-ink hover:border-ink"
-                >
-                  Register
-                  <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+              <div
+                style={{
+                  marginTop: 40,
+                  display: "flex",
+                  flexWrap: "wrap",
+                  justifyContent: "center",
+                  gap: 14,
+                }}
+              >
+                <Link href="/committees" className="btn btn-primary">
+                  View committees <span className="arr">→</span>
+                </Link>
+                <Link href="/register" className="btn btn-ghost">
+                  Register <span className="arr">→</span>
                 </Link>
               </div>
             </Reveal>
