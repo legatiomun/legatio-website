@@ -1131,6 +1131,13 @@ img { display: block; max-width: 100%; }
   border: 1px dotted var(--line-2);
   border-radius: 50%;
 }
+.patron .portrait.has-photo {
+  overflow: hidden;
+  background: var(--paper-light);
+  color: transparent;
+}
+.patron .portrait.has-photo::after { display: none; }
+.patron .portrait.has-photo img { border-radius: 50%; }
 .patron .role {
   font-family: var(--font-mono), monospace; font-size: 10px;
   letter-spacing: 0.24em; text-transform: uppercase; color: var(--accent);
@@ -1375,11 +1382,18 @@ img { display: block; max-width: 100%; }
   .committee .c-emblem, .committee.reverse .c-emblem { order: -1; }
 }
 .c-emblem {
-  position: relative; aspect-ratio: 4 / 3;
+  position: relative; aspect-ratio: 1 / 1;
   background: var(--paper-light); border: 1px solid var(--line);
-  display: grid; place-items: center; padding: 36px; overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+  padding: 32px; overflow: hidden;
 }
-.c-emblem img { max-width: 100%; max-height: 100%; object-fit: contain; }
+.c-emblem img {
+  width: 100%; height: 100%;
+  max-width: 100%; max-height: 100%;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+}
 .c-emblem::before, .c-emblem::after,
 .c-emblem .c3, .c-emblem .c4 {
   content: ""; position: absolute; width: 10px; height: 10px;
@@ -1796,7 +1810,7 @@ img { display: block; max-width: 100%; }
   width: 14%;
 }
 .form-body {
-  padding: 44px 44px 36px; min-height: 320px; position: relative;
+  padding: 44px 44px 36px; position: relative;
 }
 @media (max-width: 560px) { .form-body { padding: 28px 22px 24px; } }
 .step-dots {
@@ -1949,6 +1963,138 @@ img { display: block; max-width: 100%; }
   color: var(--ink); line-height: 1.3;
 }
 .review-list dd.empty { color: var(--mute); font-style: italic; }
+
+/* Payment step (step 7) */
+.pay {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  align-items: stretch;
+  border: 1px solid var(--line-2);
+  background: var(--paper);
+  margin-bottom: 24px;
+}
+@media (max-width: 560px) { .pay { grid-template-columns: 1fr; } }
+.pay-amount {
+  padding: 28px 24px;
+  display: flex; flex-direction: column; justify-content: center;
+  border-right: 1px solid var(--line-2);
+}
+@media (max-width: 560px) {
+  .pay-amount { border-right: 0; border-bottom: 1px solid var(--line-2); }
+}
+.pay-amount .pay-label {
+  font-family: var(--font-mono), monospace; font-size: 10px;
+  letter-spacing: 0.24em; text-transform: uppercase; color: var(--accent);
+  margin-bottom: 10px;
+}
+.pay-amount .pay-value {
+  font-family: var(--font-serif), serif; font-weight: 400;
+  font-size: clamp(40px, 5.6vw, 64px); line-height: 1;
+  color: var(--ink); letter-spacing: -0.02em;
+}
+.pay-amount .pay-note {
+  margin-top: 10px;
+  font-family: var(--font-serif), serif; font-style: italic;
+  font-size: 14px; color: var(--mute); line-height: 1.4;
+}
+.pay-qr {
+  padding: 20px;
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  text-align: center;
+}
+.pay-qr img {
+  width: 180px; height: 180px;
+  border: 1px solid var(--line-2);
+  background: var(--paper);
+}
+.pay-qr .pay-upi {
+  margin: 8px 0 0;
+  font-family: var(--font-serif), serif; font-size: 15px; color: var(--ink);
+}
+.pay-qr .pay-upi strong {
+  font-family: var(--font-mono), monospace; font-size: 13px;
+  letter-spacing: 0.06em; color: var(--ink); font-weight: 500;
+}
+.pay-qr .pay-hint {
+  margin: 2px 0 0;
+  font-family: var(--font-mono), monospace; font-size: 9.5px;
+  letter-spacing: 0.16em; text-transform: uppercase; color: var(--mute);
+}
+
+/* File upload (payment screenshot) */
+.file-upload { width: 100%; }
+.file-pick {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 4px;
+  padding: 28px 20px;
+  border: 1px dashed var(--line-2);
+  background: var(--paper);
+  cursor: pointer;
+  text-align: center;
+  transition: border-color .2s, background .2s;
+}
+.file-pick:hover {
+  border-color: var(--accent);
+  background: color-mix(in oklab, var(--accent) 4%, var(--paper));
+}
+.file-pick input[type="file"] {
+  position: absolute;
+  width: 1px; height: 1px;
+  overflow: hidden; clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+.file-pick-icon {
+  display: grid; place-items: center;
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: var(--ink); color: var(--paper);
+  font-size: 18px; line-height: 1;
+  margin-bottom: 6px;
+}
+.file-pick-title {
+  font-family: var(--font-serif), serif; font-size: 17px;
+  color: var(--ink);
+}
+.file-pick-hint {
+  font-family: var(--font-mono), monospace; font-size: 9.5px;
+  letter-spacing: 0.18em; text-transform: uppercase; color: var(--mute);
+}
+
+.file-selected {
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  gap: 16px;
+  align-items: center;
+  padding: 14px;
+  border: 1px solid var(--line-2);
+  background: var(--paper);
+}
+.file-selected img {
+  width: 96px; height: 96px;
+  object-fit: cover;
+  border: 1px solid var(--line-2);
+}
+.file-selected-meta { min-width: 0; }
+.file-selected-name {
+  margin: 0;
+  font-family: var(--font-serif), serif; font-size: 15px;
+  color: var(--ink);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.file-change {
+  margin-top: 8px;
+  background: none; border: 0; padding: 0; cursor: pointer;
+  font-family: var(--font-mono), monospace; font-size: 10px;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--accent);
+  border-bottom: 1px solid var(--accent);
+  padding-bottom: 2px;
+  transition: color .2s, border-color .2s;
+}
+.file-change:hover { color: var(--ink); border-color: var(--ink); }
 
 .consent {
   margin-top: 22px;

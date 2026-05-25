@@ -43,7 +43,7 @@ export default function HomePage() {
 
           <div className="hero-emblem">
             <Image
-              src="/images/logo.png"
+              src="/images/logo-brown.png"
               alt="Legatio 4.0 — The Kurukshetra of Diplomacy"
               width={1120}
               height={1120}

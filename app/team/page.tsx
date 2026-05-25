@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { Navigation } from "@/components/Navigation";
 import { Colophon } from "@/components/landing/Colophon";
@@ -222,8 +223,22 @@ function PatronCard({ officer }: { officer: Officer }) {
   const initials = officer.placeholder ? "—" : getInitials(officer.name);
   return (
     <article className="patron">
-      <div className="portrait" aria-hidden="true">
-        {initials}
+      <div className={`portrait${officer.photo ? " has-photo" : ""}`} aria-hidden="true">
+        {officer.photo ? (
+          <Image
+            src={officer.photo}
+            alt=""
+            fill
+            sizes="120px"
+            style={{
+              objectFit: "cover",
+              objectPosition: officer.photoPosition ?? "center",
+              borderRadius: "50%",
+            }}
+          />
+        ) : (
+          initials
+        )}
       </div>
       <div className="role">{officer.role}</div>
       <div className="name">{officer.name}</div>

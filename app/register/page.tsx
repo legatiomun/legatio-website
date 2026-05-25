@@ -29,7 +29,7 @@ export default function RegisterPage() {
               </span>
               <span className="chip">DPS Siliguri</span>
               <span className="chip">~5 min</span>
-              <span className="chip">Free — individual delegate</span>
+              <span className="chip"><strong>₹3,000</strong> · individual delegate</span>
             </div>
           </div>
 

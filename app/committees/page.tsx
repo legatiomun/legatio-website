@@ -220,9 +220,9 @@ function CommitteeCard({
           <Image
             src={committee.image}
             alt={`${committee.name} emblem`}
-            width={400}
-            height={300}
-            style={{ objectFit: "contain", maxWidth: "100%", maxHeight: "100%", height: "auto", width: "auto" }}
+            width={600}
+            height={600}
+            sizes="(min-width: 880px) 360px, 90vw"
           />
         )}
         <span className="classified-mark">Classified</span>
@@ -238,11 +238,11 @@ function CommitteeCard({
         <p className="c-agenda">{committee.agenda}</p>
         {committee.note && <p className="c-note">{committee.note}</p>}
         <div className="c-actions">
-          <a href="#" className="c-link">
-            Read briefing <span>→</span>
-          </a>
           <Link href="/register" className="c-link">
             {committee.code === "IPC" ? "Apply to the Press" : "Apply for this committee"} <span>→</span>
+          </Link>
+          <Link href="/faq" className="c-link">
+            Read the FAQ <span>→</span>
           </Link>
         </div>
       </div>

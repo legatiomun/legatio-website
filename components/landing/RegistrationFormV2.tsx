@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, type ChangeEvent } from "react";
+import Image from "next/image";
 import Link from "next/link";
 
 const STEPS = [
@@ -10,7 +11,8 @@ const STEPS = [
   { id: 4, title: "Experience" },
   { id: 5, title: "Preferences" },
   { id: 6, title: "Logistics" },
-  { id: 7, title: "Review & submit" },
+  { id: 7, title: "Payment" },
+  { id: 8, title: "Review & submit" },
 ] as const;
 
 type FormValues = {
@@ -35,9 +37,10 @@ type FormValues = {
   portfolio1: string;
   portfolio2: string;
   portfolio3: string;
-  dietary: string;
   accommodation: string;
   notes: string;
+  paymentScreenshot: string;
+  paymentScreenshotName: string;
   consent: boolean;
 };
 
@@ -63,9 +66,10 @@ const INITIAL: FormValues = {
   portfolio1: "",
   portfolio2: "",
   portfolio3: "",
-  dietary: "",
   accommodation: "",
   notes: "",
+  paymentScreenshot: "",
+  paymentScreenshotName: "",
   consent: false,
 };
 
@@ -121,9 +125,13 @@ function validateStep(step: number, v: FormValues): Set<keyof FormValues> {
     if (!isPhone(v.emergencyPhone)) errs.add("emergencyPhone");
   }
   if (step === 4) need("experienceLevel");
-  if (step === 5) need("committee1");
+  if (step === 5) {
+    need("committee1"); need("committee2"); need("committee3");
+    need("portfolio1"); need("portfolio2"); need("portfolio3");
+  }
   if (step === 6) need("accommodation");
-  if (step === 7 && !v.consent) errs.add("consent");
+  if (step === 7) need("paymentScreenshot");
+  if (step === 8 && !v.consent) errs.add("consent");
   return errs;
 }
 
@@ -152,7 +160,7 @@ export function RegistrationFormV2() {
   }
 
   async function submit() {
-    const e = validateStep(7, values);
+    const e = validateStep(8, values);
     if (e.size > 0) { setErrors(e); return; }
     setSubmitting(true);
     setServerError(null);
@@ -413,23 +421,27 @@ export function RegistrationFormV2() {
                 </div>
                 <span className="err">Pick one to continue</span>
               </div>
-              <div className={fieldClass("conferencesAttended")}>
-                <label>Conferences attended</label>
-                <textarea
-                  placeholder="e.g. Legatio 3.0 — UNHRC (2025)"
-                  value={values.conferencesAttended}
-                  onChange={(e: ChangeEvent<HTMLTextAreaElement>) => set("conferencesAttended", e.target.value)}
-                />
-                <span className="hint">Optional — helps with allotments.</span>
-              </div>
-              <div className={fieldClass("bestAwards")}>
-                <label>Notable awards</label>
-                <textarea
-                  placeholder="Best Delegate / High Commendation / etc."
-                  value={values.bestAwards}
-                  onChange={(e: ChangeEvent<HTMLTextAreaElement>) => set("bestAwards", e.target.value)}
-                />
-              </div>
+              {values.experienceLevel && values.experienceLevel !== "First-timer" && (
+                <>
+                  <div className={fieldClass("conferencesAttended")}>
+                    <label>Conferences attended</label>
+                    <textarea
+                      placeholder="e.g. Legatio 3.0 — UNHRC (2025)"
+                      value={values.conferencesAttended}
+                      onChange={(e: ChangeEvent<HTMLTextAreaElement>) => set("conferencesAttended", e.target.value)}
+                    />
+                    <span className="hint">Optional — helps with allotments.</span>
+                  </div>
+                  <div className={fieldClass("bestAwards")}>
+                    <label>Notable awards</label>
+                    <textarea
+                      placeholder="Best Delegate / High Commendation / etc."
+                      value={values.bestAwards}
+                      onChange={(e: ChangeEvent<HTMLTextAreaElement>) => set("bestAwards", e.target.value)}
+                    />
+                  </div>
+                </>
+              )}
             </div>
 
             {/* STEP 5 — Preferences */}
@@ -450,10 +462,10 @@ export function RegistrationFormV2() {
                       </optgroup>
                     ))}
                   </select>
-                  <span className="err">Pick at least one</span>
+                  <span className="err">Required</span>
                 </div>
                 <div className={fieldClass("committee2")}>
-                  <label>Choice II</label>
+                  <label>Choice II <span className="req">●</span></label>
                   <select
                     value={values.committee2}
                     onChange={(e) => set("committee2", e.target.value)}
@@ -463,9 +475,10 @@ export function RegistrationFormV2() {
                       <option key={opt}>{opt}</option>
                     ))}
                   </select>
+                  <span className="err">Required</span>
                 </div>
                 <div className={fieldClass("committee3")}>
-                  <label>Choice III</label>
+                  <label>Choice III <span className="req">●</span></label>
                   <select
                     value={values.committee3}
                     onChange={(e) => set("committee3", e.target.value)}
@@ -475,44 +488,40 @@ export function RegistrationFormV2() {
                       <option key={opt}>{opt}</option>
                     ))}
                   </select>
+                  <span className="err">Required</span>
                 </div>
               </div>
               <div className="grid-3" style={{ marginTop: 18 }}>
                 <div className={fieldClass("portfolio1")}>
-                  <label>Portfolio I</label>
+                  <label>Portfolio I <span className="req">●</span></label>
                   <input
                     placeholder="e.g. United States"
                     value={values.portfolio1}
                     onChange={(e) => set("portfolio1", e.target.value)}
                   />
+                  <span className="err">Required</span>
                 </div>
                 <div className={fieldClass("portfolio2")}>
-                  <label>Portfolio II</label>
+                  <label>Portfolio II <span className="req">●</span></label>
                   <input
                     value={values.portfolio2}
                     onChange={(e) => set("portfolio2", e.target.value)}
                   />
+                  <span className="err">Required</span>
                 </div>
                 <div className={fieldClass("portfolio3")}>
-                  <label>Portfolio III</label>
+                  <label>Portfolio III <span className="req">●</span></label>
                   <input
                     value={values.portfolio3}
                     onChange={(e) => set("portfolio3", e.target.value)}
                   />
+                  <span className="err">Required</span>
                 </div>
               </div>
             </div>
 
             {/* STEP 6 — Logistics */}
             <div className={`step-panel${current === 6 ? " active" : ""}`}>
-              <div className={fieldClass("dietary")}>
-                <label>Dietary requirements</label>
-                <input
-                  placeholder="Veg / Non-veg / Jain / Allergies"
-                  value={values.dietary}
-                  onChange={(e) => set("dietary", e.target.value)}
-                />
-              </div>
               <div className={fieldClass("accommodation")}>
                 <label>Accommodation <span className="req">●</span></label>
                 <div className="segmented seg-3" role="group">
@@ -539,8 +548,82 @@ export function RegistrationFormV2() {
               </div>
             </div>
 
-            {/* STEP 7 — Review */}
+            {/* STEP 7 — Payment */}
             <div className={`step-panel${current === 7 ? " active" : ""}`}>
+              <div className="pay">
+                <div className="pay-amount">
+                  <span className="pay-label">Registration fee</span>
+                  <span className="pay-value">₹3,000</span>
+                  <span className="pay-note">Per individual delegate</span>
+                </div>
+                <div className="pay-qr">
+                  <Image
+                    src="/images/payment-qr.png"
+                    alt="UPI QR code for Legatio 4.0 registration fee"
+                    width={300}
+                    height={300}
+                  />
+                  <p className="pay-upi">
+                    UPI · <strong>legatiomun@upi</strong>
+                  </p>
+                  <p className="pay-hint">Scan with any UPI app · GPay · PhonePe · Paytm</p>
+                </div>
+              </div>
+
+              <div className={fieldClass("paymentScreenshot")}>
+                <label>Payment screenshot <span className="req">●</span></label>
+                <div className="file-upload">
+                  {!values.paymentScreenshot ? (
+                    <label className="file-pick">
+                      <input
+                        type="file"
+                        accept="image/*"
+                        onChange={(e) => {
+                          const file = e.target.files?.[0];
+                          if (!file) return;
+                          if (file.size > 5 * 1024 * 1024) {
+                            alert("Please keep the screenshot under 5MB.");
+                            e.target.value = "";
+                            return;
+                          }
+                          const reader = new FileReader();
+                          reader.onload = () => {
+                            set("paymentScreenshot", reader.result as string);
+                            set("paymentScreenshotName", file.name);
+                          };
+                          reader.readAsDataURL(file);
+                        }}
+                      />
+                      <span className="file-pick-icon" aria-hidden>↑</span>
+                      <span className="file-pick-title">Choose screenshot</span>
+                      <span className="file-pick-hint">PNG or JPG · up to 5MB</span>
+                    </label>
+                  ) : (
+                    <div className="file-selected">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={values.paymentScreenshot} alt="Payment screenshot preview" />
+                      <div className="file-selected-meta">
+                        <p className="file-selected-name">{values.paymentScreenshotName}</p>
+                        <button
+                          type="button"
+                          className="file-change"
+                          onClick={() => {
+                            set("paymentScreenshot", "");
+                            set("paymentScreenshotName", "");
+                          }}
+                        >
+                          Change
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                </div>
+                <span className="err">Upload your transaction screenshot</span>
+              </div>
+            </div>
+
+            {/* STEP 8 — Review */}
+            <div className={`step-panel${current === 8 ? " active" : ""}`}>
               <dl className="review-list">
                 {[
                   ["Full name", values.fullName],
@@ -555,9 +638,9 @@ export function RegistrationFormV2() {
                   ["Experience level", values.experienceLevel],
                   ["Committee preferences", [values.committee1, values.committee2, values.committee3].filter(Boolean).join("; ")],
                   ["Portfolio preferences", [values.portfolio1, values.portfolio2, values.portfolio3].filter(Boolean).join("; ")],
-                  ["Dietary", values.dietary],
                   ["Accommodation", values.accommodation],
                   ["Notes", values.notes],
+                  ["Payment screenshot", values.paymentScreenshotName || (values.paymentScreenshot ? "attached" : "")],
                 ].map(([label, value]) => {
                   const empty = !value;
                   return (

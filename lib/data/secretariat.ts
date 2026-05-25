@@ -10,6 +10,8 @@ export type Officer = {
   quote?: string;
   /** Drop a photo into /public/team/<id>.jpg and reference it here. */
   photo?: string;
+  /** CSS object-position for the photo — e.g. "center 25%" for portrait shots. */
+  photoPosition?: string;
   placeholder?: boolean;
 };
 
@@ -19,6 +21,7 @@ export const SECRETARIAT: Officer[] = [
     name: "Ms. Snigdha Agarwal",
     role: "President",
     group: "Patrons",
+    photo: "/team/snigdha-agarwal.jpg",
     quote: "The field is set. The standard is restored. Welcome to Legatio 4.0.",
   },
   {
@@ -26,20 +29,24 @@ export const SECRETARIAT: Officer[] = [
     name: "Dr. Anisha Sharma",
     role: "Principal",
     group: "Patrons",
+    photo: "/team/anisha-sharma.jpg",
     quote: "Where words become weapons of wisdom and dialogue becomes the pathway to peace.",
+  },
+  {
+    id: "moumita",
+    name: "Moumita Ma'am",
+    role: "MUN Co-ordinator",
+    group: "Patrons",
+    quote: "The standard we set begins long before the conch is blown.",
   },
   {
     id: "gopa-gurung",
     name: "Gopa Gurung",
     role: "MUN Co-ordinator",
     group: "Patrons",
+    photo: "/team/gopa-gurung.jpg",
+    photoPosition: "center 22%",
     quote: "The relationships forged here last a lifetime.",
-  },
-  {
-    id: "moumita",
-    name: "Moumita Ma'am",
-    role: "Faculty Patron",
-    group: "Patrons",
   },
 
   {
