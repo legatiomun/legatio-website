@@ -54,49 +54,52 @@ export function Navigation() {
   }, [open]);
 
   return (
-    <header className={`nav${open ? " nav-open" : ""}`}>
-      <div className="container nav-inner">
-        <Link href="/" className="nav-brand" aria-label="Legatio 4.0 home">
-          <Image src="/images/logo-emblem.png" alt="" width={72} height={72} priority />
-          <span className="name">
-            legatio<span className="ver">4.0</span>
-          </span>
-        </Link>
-        <nav className="nav-links" aria-label="Primary">
-          {LINKS.map((l) => {
-            const active = l.match.some(
-              (m) => pathname === m || pathname.startsWith(m + "/"),
-            );
-            return (
-              <Link key={l.href} href={l.href} className={active ? "active" : undefined}>
-                {l.label}
-              </Link>
-            );
-          })}
-        </nav>
-        <div className="nav-right">
-          <span className="nav-mono" style={{ whiteSpace: "nowrap" }}>
-            31 Jul – 02 Aug 2026
-          </span>
-          <Link href="/register" className="nav-cta">
-            Register <span className="arr">→</span>
+    <>
+      <header className={`nav${open ? " nav-open" : ""}`}>
+        <div className="container nav-inner">
+          <Link href="/" className="nav-brand" aria-label="Legatio 4.0 home">
+            <Image src="/images/logo-emblem.png" alt="" width={72} height={72} priority />
+            <span className="name">
+              legatio<span className="ver">4.0</span>
+            </span>
           </Link>
-          <button
-            type="button"
-            className="nav-toggle"
-            aria-label={open ? "Close menu" : "Open menu"}
-            aria-expanded={open}
-            aria-controls="nav-drawer"
-            onClick={() => setOpen((o) => !o)}
-          >
-            <span />
-            <span />
-            <span />
-          </button>
+          <nav className="nav-links" aria-label="Primary">
+            {LINKS.map((l) => {
+              const active = l.match.some(
+                (m) => pathname === m || pathname.startsWith(m + "/"),
+              );
+              return (
+                <Link key={l.href} href={l.href} className={active ? "active" : undefined}>
+                  {l.label}
+                </Link>
+              );
+            })}
+          </nav>
+          <div className="nav-right">
+            <span className="nav-mono" style={{ whiteSpace: "nowrap" }}>
+              31 Jul – 02 Aug 2026
+            </span>
+            <Link href="/register" className="nav-cta">
+              Register <span className="arr">→</span>
+            </Link>
+            <button
+              type="button"
+              className="nav-toggle"
+              aria-label={open ? "Close menu" : "Open menu"}
+              aria-expanded={open}
+              aria-controls="nav-drawer"
+              onClick={() => setOpen((o) => !o)}
+            >
+              <span />
+              <span />
+              <span />
+            </button>
+          </div>
         </div>
-      </div>
+      </header>
 
-      {/* Mobile drawer */}
+      {/* Mobile drawer — kept outside <header> so its fixed positioning isn't
+          trapped inside the header's backdrop-filter containing block. */}
       <div
         id="nav-drawer"
         className={`nav-drawer${open ? " is-open" : ""}`}
@@ -127,6 +130,6 @@ export function Navigation() {
           <li className="nav-drawer-meta">31 Jul – 02 Aug 2026 · DPS Siliguri</li>
         </ul>
       </div>
-    </header>
+    </>
   );
 }
