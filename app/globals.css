@@ -2309,6 +2309,169 @@ img { display: block; max-width: 100%; }
   }
 }
 
+/* ────────────────────────────────────── VENUE PAGE */
+.venue-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 56px;
+  align-items: start;
+}
+@media (max-width: 880px) {
+  .venue-grid { grid-template-columns: 1fr; gap: 36px; }
+}
+
+.venue-campus {
+  position: relative;
+  background: var(--paper-light);
+  border: 1px solid var(--line);
+  padding: 40px 36px 36px;
+  overflow: hidden;
+}
+@media (min-width: 881px) {
+  .venue-campus { position: sticky; top: 92px; align-self: flex-start; }
+}
+.venue-campus-corner {
+  position: absolute;
+  width: 12px; height: 12px;
+  border-color: var(--accent);
+  border-style: solid;
+  border-width: 0;
+  pointer-events: none;
+}
+.venue-corner-tl { top: -1px;    left: -1px;  border-top-width: 1px; border-left-width: 1px; }
+.venue-corner-tr { top: -1px;    right: -1px; border-top-width: 1px; border-right-width: 1px; }
+.venue-corner-bl { bottom: -1px; left: -1px;  border-bottom-width: 1px; border-left-width: 1px; }
+.venue-corner-br { bottom: -1px; right: -1px; border-bottom-width: 1px; border-right-width: 1px; }
+
+.venue-eyebrow {
+  font-family: var(--font-mono), monospace;
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0;
+}
+.venue-title {
+  margin: 18px 0 0;
+  font-family: var(--font-serif), serif;
+  font-weight: 400;
+  font-size: clamp(34px, 4vw, 52px);
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+.venue-address {
+  margin: 22px 0 0;
+  font-family: var(--font-serif), serif;
+  font-style: normal;
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--ink);
+}
+.venue-coords {
+  margin: 22px 0 0;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  font-family: var(--font-mono), monospace;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+.venue-actions {
+  margin-top: 28px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.venue-actions .btn { padding: 14px 22px; }
+
+/* Getting-here column */
+.venue-getting { padding: 0; }
+.venue-getting-eyebrow { margin-bottom: 22px; }
+
+.venue-travel {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+}
+.venue-row {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 24px;
+  align-items: start;
+  padding: 24px 4px;
+  border-bottom: 1px solid var(--line);
+  transition: padding-left .25s;
+}
+.venue-row:last-child { border-bottom: 0; }
+.venue-row:hover { padding-left: 12px; }
+@media (max-width: 560px) {
+  .venue-row { grid-template-columns: 1fr; gap: 8px; padding: 20px 4px; }
+  .venue-row:hover { padding-left: 4px; }
+}
+.venue-row-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.venue-row-code {
+  font-family: var(--font-mono), monospace;
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  color: var(--accent);
+}
+.venue-row-label {
+  font-family: var(--font-mono), monospace;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+.venue-row-body { min-width: 0; }
+.venue-row-headline {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.venue-row-title {
+  margin: 0;
+  font-family: var(--font-serif), serif;
+  font-weight: 400;
+  font-size: clamp(20px, 2.4vw, 26px);
+  line-height: 1.2;
+  color: var(--ink);
+  transition: color .2s;
+}
+.venue-row:hover .venue-row-title { color: var(--accent); }
+.venue-row-distance {
+  font-family: var(--font-mono), monospace;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--mute);
+  white-space: nowrap;
+}
+.venue-row-detail {
+  margin: 8px 0 0;
+  font-family: var(--font-serif), serif;
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--ink);
+  max-width: 56ch;
+}
+.venue-foot-note {
+  margin-top: 24px;
+  font-family: var(--font-serif), serif;
+  font-style: italic;
+  font-size: 15px;
+  color: var(--mute);
+}
+
 /* ──────────────────────────────────────────────────────────────────
  * MOBILE — overrides for ≤ 880 / ≤ 720 / ≤ 480.
  * Desktop layouts above are untouched.
