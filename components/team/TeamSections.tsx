@@ -6,9 +6,9 @@ import { Reveal, RevealStagger, StaggerItem } from "@/components/motion/Reveal";
 import { SECRETARIAT, type Officer } from "@/lib/data/secretariat";
 
 export function TeamSections() {
-  const featured = SECRETARIAT.find((o) => o.id === "sinjini-banarjee");
+  const featured = SECRETARIAT.find((o) => o.id === "sinjini-banerjee");
   const patrons = SECRETARIAT.filter((o) => o.group === "Patrons");
-  const secretariat = SECRETARIAT.filter((o) => o.group === "Secretariat" && o.id !== "sinjini-banarjee");
+  const secretariat = SECRETARIAT.filter((o) => o.group === "Secretariat" && o.id !== "sinjini-banerjee");
   const eb = SECRETARIAT.filter((o) => o.group === "Executive Board");
 
   return (

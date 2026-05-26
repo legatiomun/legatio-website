@@ -256,8 +256,22 @@ function UsgCard({ officer }: { officer: Officer }) {
   const cls = officer.placeholder ? "usg placeholder" : "usg";
   return (
     <article className={cls}>
-      <div className="portrait-sm" aria-hidden="true">
-        {initials}
+      <div className={`portrait-sm${officer.photo ? " has-photo" : ""}`} aria-hidden="true">
+        {officer.photo ? (
+          <Image
+            src={officer.photo}
+            alt=""
+            fill
+            sizes="64px"
+            style={{
+              objectFit: "cover",
+              objectPosition: officer.photoPosition ?? "center",
+              borderRadius: "50%",
+            }}
+          />
+        ) : (
+          initials
+        )}
       </div>
       <h3 className="role">{officer.role}</h3>
       <div className="name">{officer.placeholder ? "TBA · 2026" : officer.name}</div>

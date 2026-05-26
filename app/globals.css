@@ -1203,6 +1203,12 @@ img { display: block; max-width: 100%; }
 .usg.placeholder .portrait-sm {
   background: var(--paper); color: var(--mute);
 }
+.usg .portrait-sm.has-photo {
+  overflow: hidden;
+  background: var(--paper-light);
+  color: transparent;
+}
+.usg .portrait-sm.has-photo img { border-radius: 50%; }
 .usg .role {
   font-family: var(--font-serif), serif; font-weight: 400;
   font-size: 18px; line-height: 1.15;
