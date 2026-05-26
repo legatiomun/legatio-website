@@ -38,7 +38,7 @@ export const SECRETARIAT: Officer[] = [
     role: "Head Mistress · DPS Siliguri",
     group: "Patrons",
     photo: "/team/moumita-debnath.jpg",
-    quote: "Before the field, the classroom. Before the floor, the discipline.",
+    quote: "What is tested here endures elsewhere.",
   },
   {
     id: "gopa-gurung",
