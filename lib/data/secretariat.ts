@@ -26,7 +26,7 @@ export const SECRETARIAT: Officer[] = [
   },
   {
     id: "anisha-sharma",
-    name: "Dr. Anisha Sharma",
+    name: "Anisha Sharma",
     role: "Principal · DPS Siliguri",
     group: "Patrons",
     photo: "/team/anisha-sharma.jpg",
@@ -38,7 +38,7 @@ export const SECRETARIAT: Officer[] = [
     role: "Head Mistress · DPS Siliguri",
     group: "Patrons",
     photo: "/team/moumita-debnath.jpg",
-    quote: "The standard we set begins long before the conch is blown.",
+    quote: "Before the field, the classroom. Before the floor, the discipline.",
   },
   {
     id: "gopa-gurung",
