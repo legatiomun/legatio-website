@@ -149,7 +149,7 @@ export default function TeamPage() {
             </div>
           </div>
 
-          <div className="usg-grid">
+          <div className="usg-grid" data-orphans={secretariat.length % 4}>
             {secretariat.map((o) => (
               <UsgCard key={o.id} officer={o} />
             ))}

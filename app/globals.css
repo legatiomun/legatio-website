@@ -1182,8 +1182,13 @@ img { display: block; max-width: 100%; }
   border-right: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
 }
-.usg:nth-last-child(-n+4) { border-bottom: 0; }
+.usg:nth-last-child(-n+2) { border-bottom: 0; }
 .usg:nth-child(4n) { border-right: 0; }
+.usg:last-child { border-right: 0; }
+/* When the last row has exactly 2 orphans (22 items in 4 cols), centre them. */
+@media (min-width: 881px) {
+  .usg-grid[data-orphans="2"] .usg:nth-last-child(2) { grid-column-start: 2; }
+}
 @media (max-width: 880px) {
   .usg { border-right: 1px solid var(--line); }
   .usg:nth-child(4n) { border-right: 1px solid var(--line); }
