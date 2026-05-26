@@ -1185,9 +1185,18 @@ img { display: block; max-width: 100%; }
 .usg:nth-last-child(-n+2) { border-bottom: 0; }
 .usg:nth-child(4n) { border-right: 0; }
 .usg:last-child { border-right: 0; }
-/* When the last row has exactly 2 orphans (22 items in 4 cols), centre them. */
+/* When the last row has exactly 2 orphans (22 items in 4 cols), stretch
+   each to span 2 columns so the row is fully filled instead of leaving
+   empty space on the sides. Content is re-centred inside the wider cells. */
 @media (min-width: 881px) {
-  .usg-grid[data-orphans="2"] .usg:nth-last-child(2) { grid-column-start: 2; }
+  .usg-grid[data-orphans="2"] .usg:nth-last-child(-n+2) {
+    grid-column-end: span 2;
+    text-align: center;
+  }
+  .usg-grid[data-orphans="2"] .usg:nth-last-child(-n+2) .portrait-sm {
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 @media (max-width: 880px) {
   .usg { border-right: 1px solid var(--line); }
