@@ -43,6 +43,21 @@ Apps Script URL set in `GOOGLE_SHEETS_WEBAPP_URL`.
    - `SHARED_SECRET` — pick a long random string (e.g. run `openssl rand -hex 24` in a terminal). Keep a copy; you'll paste the same value into Vercel in step 5.
 4. **Save** (⌘S).
 
+### 3.5 · Enable the Drive advanced service (for OCR)
+
+The script auto-detects UPI transaction IDs from each payment screenshot using
+Drive's built-in OCR. That requires the advanced Drive service to be turned on
+inside the Apps Script project (separate from the standard `DriveApp`).
+
+1. In the Apps Script editor's left sidebar, click **Services** (the `+` icon).
+2. Find **Drive API**, leave the Identifier as `Drive`, pick either **v2** or **v3** (the script auto-detects which you enabled), then **Add**.
+3. Save again. You're done — no code changes needed; the script already references `Drive.Files.copy`.
+
+> If you skip this, registrations still work — screenshots upload to Drive
+> and rows append to the sheet — but the "Detected Txn ID" column stays
+> blank. You can enable it later and re-run `backfillTransactionIds()` from
+> the Apps Script editor to OCR existing rows.
+
 ### 4 · Deploy the Apps Script as a Web App
 
 1. In the Apps Script editor: **Deploy → New deployment**
@@ -107,6 +122,7 @@ The header row matches the keys in `components/landing/RegistrationFormV2.tsx`:
 | Notes | `notes` |
 | Screenshot File | filename saved to Drive |
 | Screenshot Link | Drive URL (anyone-with-link can view) |
+| Detected Txn ID | UPI ref / UTR auto-extracted from the screenshot via OCR (blank if not found) |
 | Consent | `Yes` / `No` |
 
 ---
@@ -130,3 +146,5 @@ between will be rejected with `403 Forbidden` — fine for a school MUN volume.
 - **`Could not reach registration store`** → Apps Script deployment isn't *Anyone access*, or the `/exec` URL is wrong. Re-check step 4.
 - **Screenshots aren't in Drive** → wrong `SCREENSHOT_FOLDER_ID`, or you didn't grant the Drive scope. Re-run `submitTestRow` from the Apps Script editor, accept the auth dialog.
 - **The form submits but no row appears** → in the Apps Script editor, **Executions** (left sidebar clock icon) shows the last few runs and any error stack trace.
+- **"Detected Txn ID" column is always blank** → the advanced Drive service isn't enabled, or the new scopes weren't granted after enabling it. Re-check step 3.5, then run `submitTestRow` once from the Apps Script editor and accept the auth dialog. Existing rows can be filled in by running `backfillTransactionIds()` from the editor.
+- **OCR finds the wrong number / picks up a phone number** → the script tries labelled matches first (`UPI Ref`, `UTR`, `Txn ID`, `Transaction ID`, `Reference No`) and falls back to any 12-digit number. If a screenshot has both a 12-digit phone and a 12-digit ref but no label, the first 12-digit run wins. Edit `parseTransactionId_` in the script if you want stricter rules.

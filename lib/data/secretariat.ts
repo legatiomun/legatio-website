@@ -18,7 +18,7 @@ export type Officer = {
 export const SECRETARIAT: Officer[] = [
   {
     id: "snigdha-agarwal",
-    name: "Ms. Snigdha Agarwal",
+    name: "Mrs. Snigdha Agarwal",
     role: "President",
     group: "Patrons",
     photo: "/team/snigdha-agarwal.jpg",
