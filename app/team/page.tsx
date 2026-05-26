@@ -262,7 +262,7 @@ function UsgCard({ officer }: { officer: Officer }) {
             src={officer.photo}
             alt=""
             fill
-            sizes="64px"
+            sizes="88px"
             style={{
               objectFit: "cover",
               objectPosition: officer.photoPosition ?? "center",

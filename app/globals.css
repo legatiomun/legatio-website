@@ -1192,12 +1192,12 @@ img { display: block; max-width: 100%; }
   .usg:nth-last-child(-n+2) { border-bottom: 0; }
 }
 .usg .portrait-sm {
-  width: 64px; height: 64px; border-radius: 50%;
+  width: 88px; height: 88px; border-radius: 50%;
   background: var(--paper-light); border: 1px solid var(--line-2);
   display: grid; place-items: center;
   font-family: var(--font-serif), serif; font-style: italic;
-  font-size: 22px; color: var(--accent);
-  margin-bottom: 18px;
+  font-size: 28px; color: var(--accent);
+  margin-bottom: 20px;
   position: relative;
 }
 .usg.placeholder .portrait-sm {
@@ -2696,7 +2696,7 @@ img { display: block; max-width: 100%; }
 
   /* Secretariat USG grid */
   .usg { padding: 22px 18px; }
-  .usg .portrait-sm { width: 56px; height: 56px; font-size: 20px; margin-bottom: 14px; }
+  .usg .portrait-sm { width: 72px; height: 72px; font-size: 24px; margin-bottom: 16px; }
   .usg .role { font-size: 16px; }
 
   /* EB grid */
