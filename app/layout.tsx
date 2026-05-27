@@ -10,6 +10,8 @@ import Script from "next/script";
 import "./globals.css";
 
 const CLARITY_ID = process.env.NEXT_PUBLIC_CLARITY_ID ?? "wwq7g3ncik";
+const GOOGLE_ANALYTICS_ID =
+  process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID ?? "G-D79YHS2CB5";
 
 const ebGaramond = EB_Garamond({
   subsets: ["latin"],
@@ -79,6 +81,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     >
       <body data-scheme="saffron" data-density="standard">
         {children}
+        {GOOGLE_ANALYTICS_ID && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ANALYTICS_ID}`}
+              strategy="afterInteractive"
+            />
+            <Script id="google-analytics" strategy="afterInteractive">
+              {`window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag("js", new Date());
+              gtag("config", "${GOOGLE_ANALYTICS_ID}");`}
+            </Script>
+          </>
+        )}
         {CLARITY_ID && (
           <Script id="ms-clarity" strategy="afterInteractive">
             {`(function(c,l,a,r,i,t,y){
