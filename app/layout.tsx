@@ -49,6 +49,7 @@ const tiro = Tiro_Devanagari_Sanskrit({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://legatio.in"),
   title: "Legatio 4.0 — The Kurukshetra of Diplomacy",
   description:
     "The fourth edition of Legatio, the flagship Model United Nations conference of Delhi Public School Siliguri. 31 July – 2 August 2026.",

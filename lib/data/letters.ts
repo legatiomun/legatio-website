@@ -11,7 +11,7 @@ export const LETTERS: Letter[] = [
   {
     id: "president",
     role: "President",
-    name: "Ms. Snigdha Agarwal",
+    name: "Mrs. Snigdha Agarwal",
     body: [
       "There are moments in an institution's journey that transcend the ordinary ones, not merely marking, but defining. Legatio is one such moment and with its fourth edition, it becomes something more than a milestone… it becomes a statement.",
       "When Legatio was first conceived, the vision was simple in its ambition but vast in its scope — to create a space where young minds could engage with the world not as observers, but as architects of its future. Three editions later, that vision has not only been realised, it has been exceeded. Legatio has grown into the most anticipated, most respected, and most transformative Model United Nations conference in this region.",
@@ -26,7 +26,7 @@ export const LETTERS: Letter[] = [
     name: "Dr. Anisha Sharma",
     honorific: "Dr.",
     body: [
-      "It is with immense pride and profound enthusiasm that I invite you to Legatio 4.0, the fourth edition of the Model United Nations Conference hosted by Delhi Public School, Siliguri, from 31st July to 2nd August 2026, under the visionary guidance of Ms. Snigdha Agarwal, Director of Delhi Public School, Siliguri, and Delhi Public School, Fulbari.",
+      "It is with immense pride and profound enthusiasm that I invite you to Legatio 4.0, the fourth edition of the Model United Nations Conference hosted by Delhi Public School, Siliguri, from 31st July to 2nd August 2026, under the visionary guidance of Mrs. Snigdha Agarwal, Director of Delhi Public School, Siliguri, and Delhi Public School, Fulbari.",
       "Legatio 4.0 is the platform 'where words become weapons of wisdom and dialogue becomes the pathway to peace.' In an era marked by uncertainty, conflict, and rapid transformation, the need for thoughtful leaders and compassionate diplomats has never been greater.",
       "Each of the previous editions of Legatio was a resounding success, celebrated for its intellectual rigor, spirited debate, and the extraordinary calibre of its participants. This year, we raise the bar even higher by bringing together nearly 600 delegates from esteemed institutions across the region. For these young changemakers, Legatio 4.0 will serve as a crucible of ideas — an arena where they will sharpen their skills in public speaking, in-depth research, negotiation, policy analysis, diplomacy, and collaborative problem-solving.",
       "I extend a heartfelt welcome to every delegate, executive board member, and mentor. May Legatio 4.0 ignite bold ideas, forge enduring friendships, and inspire each participant to become a voice of reason in a world that urgently needs understanding. I wish Legatio 4.0 unparalleled success, leaving behind an unforgettable legacy of diplomacy, leadership, and global impact.",

@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState, type ChangeEvent } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { COMMITTEES, TIERS } from "@/lib/data/committees";
 
 const STEPS = [
   { id: 1, title: "Personal" },
@@ -73,36 +74,35 @@ const INITIAL: FormValues = {
   consent: false,
 };
 
-const COMMITTEE_OPTIONS = [
-  { group: "Beginner", items: [
-    "UNHRC — UN Human Rights Council",
-    "UNCSW — UN Commission on the Status of Women",
-    "SPECPOL — Special Political & Decolonization",
-    "IPC — International Press Corps",
-  ] },
-  { group: "Intermediate", items: [
-    "ECOFIN — Economic & Financial Committee",
-    "UNODC — UN Office on Drugs and Crime",
-    "BRICS — BRICS Summit",
-    "CCPA — Cabinet Committee on Political Affairs",
-    "LS — Lok Sabha",
-  ] },
-  { group: "Advanced", items: [
-    "ICJ — International Court of Justice",
-    "UNSC-CTC — UN Security Council CTC",
-    "1962-CCC — Indo-China War Cabinet (1962)",
-  ] },
-  { group: "Flagship", items: [
-    "HLPF — High Level Political Forum",
-    "COPUOS — Peaceful Uses of Outer Space",
-    "US-SEN — United States Senate",
-  ] },
-];
+const COMMITTEE_OPTIONS = TIERS.map((tier) => ({
+  group: tier,
+  items: COMMITTEES
+    .filter((committee) => committee.tier === tier)
+    .map((committee) => `${committee.code} — ${committee.name}`),
+}));
 
-const ALL_COMMITTEES = COMMITTEE_OPTIONS.flatMap((g) => g.items);
+type CommitteeField = "committee1" | "committee2" | "committee3";
 
 const isEmail = (s: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s);
 const isPhone = (s: string) => /^[0-9+\- ]{8,}$/.test(s);
+
+function availableCommitteeGroups(values: FormValues, field: CommitteeField) {
+  const taken = new Set(
+    (["committee1", "committee2", "committee3"] as const)
+      .filter((key) => key !== field)
+      .map((key) => values[key])
+      .filter((choice) => choice.trim().length > 0),
+  );
+
+  return COMMITTEE_OPTIONS
+    .map((group) => ({
+      ...group,
+      items: group.items.filter(
+        (choice) => choice === values[field] || !taken.has(choice),
+      ),
+    }))
+    .filter((group) => group.items.length > 0);
+}
 
 function validateStep(step: number, v: FormValues): Set<keyof FormValues> {
   const errs = new Set<keyof FormValues>();
@@ -128,6 +128,14 @@ function validateStep(step: number, v: FormValues): Set<keyof FormValues> {
   if (step === 5) {
     need("committee1"); need("committee2"); need("committee3");
     need("portfolio1"); need("portfolio2"); need("portfolio3");
+    const choices = [v.committee1, v.committee2, v.committee3].filter(
+      (choice) => choice.trim().length > 0,
+    );
+    if (new Set(choices).size !== choices.length) {
+      errs.add("committee1");
+      errs.add("committee2");
+      errs.add("committee3");
+    }
   }
   if (step === 6) need("accommodation");
   if (step === 7) need("paymentScreenshot");
@@ -454,7 +462,7 @@ export function RegistrationFormV2() {
                     onChange={(e) => set("committee1", e.target.value)}
                   >
                     <option value="">Select a committee…</option>
-                    {COMMITTEE_OPTIONS.map((g) => (
+                    {availableCommitteeGroups(values, "committee1").map((g) => (
                       <optgroup key={g.group} label={g.group}>
                         {g.items.map((opt) => (
                           <option key={opt}>{opt}</option>
@@ -471,8 +479,12 @@ export function RegistrationFormV2() {
                     onChange={(e) => set("committee2", e.target.value)}
                   >
                     <option value="">Select…</option>
-                    {ALL_COMMITTEES.map((opt) => (
-                      <option key={opt}>{opt}</option>
+                    {availableCommitteeGroups(values, "committee2").map((g) => (
+                      <optgroup key={g.group} label={g.group}>
+                        {g.items.map((opt) => (
+                          <option key={opt}>{opt}</option>
+                        ))}
+                      </optgroup>
                     ))}
                   </select>
                   <span className="err">Required</span>
@@ -484,8 +496,12 @@ export function RegistrationFormV2() {
                     onChange={(e) => set("committee3", e.target.value)}
                   >
                     <option value="">Select…</option>
-                    {ALL_COMMITTEES.map((opt) => (
-                      <option key={opt}>{opt}</option>
+                    {availableCommitteeGroups(values, "committee3").map((g) => (
+                      <optgroup key={g.group} label={g.group}>
+                        {g.items.map((opt) => (
+                          <option key={opt}>{opt}</option>
+                        ))}
+                      </optgroup>
                     ))}
                   </select>
                   <span className="err">Required</span>

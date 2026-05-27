@@ -57,11 +57,29 @@ export async function POST(req: Request) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(enriched),
     });
+    const text = await res.text();
+    let upstream: unknown = null;
+    try {
+      upstream = text ? JSON.parse(text) : null;
+    } catch {
+      upstream = null;
+    }
+
     if (!res.ok) {
-      const text = await res.text();
       console.error("[register] upstream error", res.status, text);
       return NextResponse.json({ ok: false, error: "Upstream rejected submission" }, { status: 502 });
     }
+
+    if (
+      !upstream ||
+      typeof upstream !== "object" ||
+      !("ok" in upstream) ||
+      upstream.ok !== true
+    ) {
+      console.error("[register] upstream rejected submission", upstream ?? text);
+      return NextResponse.json({ ok: false, error: "Registration store rejected submission" }, { status: 502 });
+    }
+
     return NextResponse.json({ ok: true, id });
   } catch (err) {
     console.error("[register] forward failed", err);

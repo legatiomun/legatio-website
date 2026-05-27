@@ -454,7 +454,7 @@ export default function HomePage() {
           <div className="attr">
             <div className="attr-portrait">SA</div>
             <div className="attr-name">
-              Ms. Snigdha Agarwal
+              Mrs. Snigdha Agarwal
               <small>President · Legatio 4.0</small>
             </div>
           </div>
