@@ -22,7 +22,7 @@ export const FAQ_SECTIONS: FAQSection[] = [
       },
       {
         q: "Who can participate?",
-        a: "High school students from any school — both first-time delegates and experienced MUNers are welcome.",
+        a: "Students from Grade 7 and above from any school — both first-time delegates and experienced MUNers are welcome.",
       },
       {
         q: "Do I need prior MUN experience?",

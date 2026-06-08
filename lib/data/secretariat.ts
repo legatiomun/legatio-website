@@ -12,6 +12,8 @@ export type Officer = {
   photo?: string;
   /** CSS object-position for the photo — e.g. "center 25%" for portrait shots. */
   photoPosition?: string;
+  /** Optional fine crop adjustment inside circular portraits. */
+  photoTransform?: string;
   placeholder?: boolean;
 };
 
@@ -83,6 +85,7 @@ export const SECRETARIAT: Officer[] = [
     role: "Joint Chef de Cabinet",
     group: "Secretariat",
     photo: "/team/ansh-agarwal.jpg",
+    photoTransform: "translateY(-6%) scale(1.28)",
   },
   {
     id: "mayank-upadhaya",
@@ -90,6 +93,7 @@ export const SECRETARIAT: Officer[] = [
     role: "Joint Chef de Cabinet",
     group: "Secretariat",
     photo: "/team/mayank-upadhaya.jpg",
+    photoTransform: "translateY(-6%) scale(1.24)",
   },
   {
     id: "jeevan-chhetri",
@@ -97,6 +101,7 @@ export const SECRETARIAT: Officer[] = [
     role: "Deputy Chef de Cabinet",
     group: "Secretariat",
     photo: "/team/jeevan-chhetri.jpg",
+    photoTransform: "translateY(-2%) scale(1.2)",
   },
   {
     id: "mayank-somani",
@@ -104,6 +109,7 @@ export const SECRETARIAT: Officer[] = [
     role: "USG Communications",
     group: "Secretariat",
     photo: "/team/mayank-somani.jpg",
+    photoTransform: "translate(-2%, -22%) scale(1.34)",
   },
   {
     id: "debparna-saha",
@@ -111,6 +117,7 @@ export const SECRETARIAT: Officer[] = [
     role: "ASG Communications",
     group: "Secretariat",
     photo: "/team/debparna-saha.jpg",
+    photoTransform: "translateY(-18%) scale(1.28)",
   },
   {
     id: "saksham-raj",
@@ -118,6 +125,7 @@ export const SECRETARIAT: Officer[] = [
     role: "ASG Communications",
     group: "Secretariat",
     photo: "/team/saksham-raj.jpg",
+    photoTransform: "translate(5%, -24%) scale(1.36)",
   },
   {
     id: "zaina-sagir",
@@ -125,6 +133,7 @@ export const SECRETARIAT: Officer[] = [
     role: "ASG Communications",
     group: "Secretariat",
     photo: "/team/zaina-sagir.jpg",
+    photoTransform: "translateY(-18%) scale(1.28)",
   },
   {
     id: "sanvi-agarwal",
@@ -132,6 +141,7 @@ export const SECRETARIAT: Officer[] = [
     role: "USG Delegate Affairs",
     group: "Secretariat",
     photo: "/team/sanvi-agarwal.jpg",
+    photoTransform: "translateY(-16%) scale(1.24)",
   },
   {
     id: "ladipma-rai",

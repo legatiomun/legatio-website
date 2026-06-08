@@ -233,6 +233,7 @@ function PatronCard({ officer }: { officer: Officer }) {
             style={{
               objectFit: "cover",
               objectPosition: officer.photoPosition ?? "center",
+              transform: officer.photoTransform,
               borderRadius: "50%",
             }}
           />
@@ -266,6 +267,7 @@ function UsgCard({ officer }: { officer: Officer }) {
             style={{
               objectFit: "cover",
               objectPosition: officer.photoPosition ?? "center",
+              transform: officer.photoTransform,
               borderRadius: "50%",
             }}
           />
