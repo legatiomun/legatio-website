@@ -93,7 +93,7 @@ export const FAQ_SECTIONS: FAQSection[] = [
       },
       {
         q: "How do I stay updated on all Legatio 4.0 announcements?",
-        a: "Follow our official Instagram handle and watch out for circulars sent through your school. All key announcements — schedules, deadlines, and updates — will be posted there first.",
+        a: "Follow our official Instagram handle @legatio_4.0 and watch out for circulars sent through your school. All key announcements — schedules, deadlines, and updates — will be posted there first.",
       },
     ],
   },

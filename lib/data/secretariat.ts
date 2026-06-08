@@ -177,6 +177,7 @@ export const SECRETARIAT: Officer[] = [
     role: "ASG Conference Management",
     group: "Secretariat",
     photo: "/team/devarsh-sikdar.jpg",
+    photoTransform: "translateY(-8%) scale(1.22)",
   },
   {
     id: "kevin-lama",
@@ -184,6 +185,7 @@ export const SECRETARIAT: Officer[] = [
     role: "ASG Conference Management",
     group: "Secretariat",
     photo: "/team/kevin-lama.jpg",
+    photoTransform: "translateY(-18%) scale(1.32)",
   },
   {
     id: "samarth-sharma",
@@ -191,6 +193,7 @@ export const SECRETARIAT: Officer[] = [
     role: "ASG Conference Management",
     group: "Secretariat",
     photo: "/team/samarth-sharma.jpg",
+    photoTransform: "translateY(-8%) scale(1.2)",
   },
   {
     id: "suryanshu-chakraborty",
@@ -198,6 +201,7 @@ export const SECRETARIAT: Officer[] = [
     role: "ASG Conference Management",
     group: "Secretariat",
     photo: "/team/suryanshu-chakraborty.jpg",
+    photoTransform: "translateY(-22%) scale(1.34)",
   },
   {
     id: "saket-dewan",

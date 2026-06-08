@@ -37,7 +37,8 @@ export function Colophon({ contextLine = "Edition 4 · Printed in cream & ink" }
             <h4>Connect</h4>
             <a href="mailto:legatiomun@gmail.com">legatiomun@gmail.com</a>
             <a href="tel:+918918849230">+91 89188 49230</a>
-            <a href="https://instagram.com/legatio_mun" target="_blank" rel="noopener noreferrer">@legatio_mun</a>
+            <a href="https://instagram.com/legatio_4.0" target="_blank" rel="noopener noreferrer">@legatio_4.0</a>
+            <a href="https://www.dpssiliguri.com/" target="_blank" rel="noopener noreferrer">DPS Website</a>
           </div>
           <div>
             <h4>Address</h4>

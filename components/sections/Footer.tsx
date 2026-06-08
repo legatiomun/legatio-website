@@ -44,6 +44,8 @@ export function Footer() {
           <ul className="mt-4 space-y-2 text-sm text-ink/80">
             <li><a href="mailto:legatiomun@gmail.com" className="hover:text-accent">legatiomun@gmail.com</a></li>
             <li><a href="tel:+918918849230" className="hover:text-accent">+91 89188 49230</a></li>
+            <li><a href="https://instagram.com/legatio_4.0" target="_blank" rel="noopener noreferrer" className="hover:text-accent">@legatio_4.0</a></li>
+            <li><a href="https://www.dpssiliguri.com/" target="_blank" rel="noopener noreferrer" className="hover:text-accent">DPS Website</a></li>
             <li className="pt-2 text-sm text-mute">Delhi Public School, Siliguri<br />West Bengal, India</li>
           </ul>
         </div>
