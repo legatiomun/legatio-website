@@ -2025,8 +2025,8 @@ img { display: block; max-width: 100%; }
 }
 .pay-qr img {
   width: 180px; height: 180px;
-  border: 1px solid var(--line-2);
-  background: var(--paper);
+  background: transparent;
+  mix-blend-mode: multiply;
 }
 .pay-qr .pay-upi {
   margin: 8px 0 0;
@@ -2040,6 +2040,18 @@ img { display: block; max-width: 100%; }
   margin: 2px 0 0;
   font-family: var(--font-mono), monospace; font-size: 9.5px;
   letter-spacing: 0.16em; text-transform: uppercase; color: var(--mute);
+}
+.pay-qr .pay-portal-link {
+  font-family: var(--font-mono), monospace;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 2px;
+}
+.pay-qr .pay-portal-link:hover {
+  color: var(--ink);
 }
 
 /* File upload (payment screenshot) */

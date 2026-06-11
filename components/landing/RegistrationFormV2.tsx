@@ -582,6 +582,14 @@ export function RegistrationFormV2() {
                   <p className="pay-upi">
                     Payment portal
                   </p>
+                  <a
+                    className="pay-portal-link"
+                    href="https://entab.online/R-dpsslg"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Click here to open the payment portal
+                  </a>
                   <p className="pay-hint">
                     Scan to open the payment portal. Complete the payment there, then upload the confirmation
                     screenshot from the portal.
