@@ -574,20 +574,23 @@ export function RegistrationFormV2() {
                 </div>
                 <div className="pay-qr">
                   <Image
-                    src="/images/payment-qr.png"
-                    alt="UPI QR code for Legatio 4.0 registration fee"
+                    src="/images/payment-portal-qr.jpg"
+                    alt="Payment portal QR code for Legatio 4.0 registration fee"
                     width={300}
                     height={300}
                   />
                   <p className="pay-upi">
-                    UPI · <strong>legatiomun@upi</strong>
+                    Payment portal
                   </p>
-                  <p className="pay-hint">Scan with any UPI app · GPay · PhonePe · Paytm</p>
+                  <p className="pay-hint">
+                    Scan to open the payment portal. Complete the payment there, then upload the confirmation
+                    screenshot from the portal.
+                  </p>
                 </div>
               </div>
 
               <div className={fieldClass("paymentScreenshot")}>
-                <label>Payment screenshot <span className="req">●</span></label>
+                <label>Portal payment screenshot <span className="req">●</span></label>
                 <div className="file-upload">
                   {!values.paymentScreenshot ? (
                     <label className="file-pick">
@@ -634,7 +637,7 @@ export function RegistrationFormV2() {
                     </div>
                   )}
                 </div>
-                <span className="err">Upload your transaction screenshot</span>
+                <span className="err">Upload your portal payment screenshot</span>
               </div>
             </div>
 
