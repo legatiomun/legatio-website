@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { Navigation } from "@/components/Navigation";
 import { Colophon } from "@/components/landing/Colophon";
-import { PageHeader } from "@/components/PageHeader";
+
 
 export const metadata: Metadata = {
   title: "Venue & Travel · Legatio 4.0",
@@ -50,15 +51,32 @@ export default function VenuePage() {
     <>
       <Navigation />
 
-      <PageHeader
-        eyebrow="Venue · Travel"
-        title={
-          <>
-            DPS Siliguri, <em>West Bengal.</em>
-          </>
-        }
-        lede="Legatio 4.0 is hosted on the DPS Siliguri campus — a short ride from Bagdogra airport and New Jalpaiguri railway, in the foothills of the Eastern Himalayas."
-      />
+      <header className="venue-hero relative overflow-hidden border-b border-line bg-cream/50">
+        <div className="venue-hero-accent absolute left-0 top-0 h-px w-full origin-left bg-accent" />
+        <div className="mx-auto flex max-w-6xl items-center gap-12 px-5 py-20 sm:px-8 sm:py-28 lg:gap-16">
+          <div className="venue-hero-crest hidden flex-none lg:block">
+            <Image
+              src="/images/dps-crest.jpg"
+              alt="Delhi Public School crest — Service Before Self"
+              width={400}
+              height={400}
+              className="venue-hero-crest-img"
+            />
+          </div>
+          <div className="flex-1">
+            <p className="text-xs uppercase tracking-[0.22em] text-accent">
+              Venue &middot; Travel
+            </p>
+            <h1 className="mt-5 max-w-3xl font-serif text-4xl leading-[1.05] text-ink sm:text-6xl md:text-7xl">
+              DPS Siliguri, <em>West Bengal.</em>
+            </h1>
+            <p className="mt-7 max-w-2xl text-lg leading-relaxed text-mute">
+              Legatio 4.0 is hosted on the DPS Siliguri campus — a short ride from Bagdogra
+              airport and New Jalpaiguri railway, in the foothills of the Eastern Himalayas.
+            </p>
+          </div>
+        </div>
+      </header>
 
       <main className="container" style={{ padding: "70px 40px 40px" }}>
         <div className="venue-grid">

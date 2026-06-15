@@ -18,6 +18,7 @@ const LINKS: NavLink[] = [
   { href: "/schedule", label: "Schedule", match: ["/schedule"] },
   { href: "/team", label: "Secretariat", match: ["/team"] },
   { href: "/venue", label: "Venue", match: ["/venue"] },
+  { href: "/resources", label: "Resources", match: ["/resources"] },
   { href: "/faq", label: "FAQ", match: ["/faq"] },
 ];
 

@@ -34,6 +34,7 @@ export function Footer() {
           <p className="text-xs uppercase tracking-wider text-mute">Information</p>
           <ul className="mt-4 space-y-2 text-sm text-ink/80">
             <li><Link href="/venue" className="hover:text-accent">Venue & Travel</Link></li>
+            <li><Link href="/resources" className="hover:text-accent">Resources</Link></li>
             <li><Link href="/faq" className="hover:text-accent">FAQ</Link></li>
             <li><Link href="/register" className="hover:text-accent">Register</Link></li>
           </ul>

@@ -121,9 +121,9 @@ img { display: block; max-width: 100%; }
   letter-spacing: 0;
   vertical-align: 0.05em;
 }
-.nav-links { display: flex; gap: 30px; justify-self: center; }
+.nav-links { display: flex; gap: 22px; justify-self: center; }
 .nav-links a {
-  font-size: 13px;
+  font-size: 12.5px;
   color: var(--ink);
   padding: 6px 0;
   border-bottom: 1px solid transparent;
@@ -2400,6 +2400,14 @@ img { display: block; max-width: 100%; }
   line-height: 1.6;
   color: var(--ink);
 }
+.venue-hero-crest-img {
+  width: 200px;
+  height: auto;
+  opacity: 0.8;
+  mix-blend-mode: multiply;
+  filter: sepia(0.05) contrast(1.04);
+}
+
 .venue-coords {
   margin: 22px 0 0;
   padding-top: 16px;
