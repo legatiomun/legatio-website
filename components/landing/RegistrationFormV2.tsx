@@ -151,6 +151,8 @@ export function RegistrationFormV2() {
   const [submitted, setSubmitted] = useState<{ id: string; name: string; email: string } | null>(null);
   const [serverError, setServerError] = useState<string | null>(null);
   const cardRef = useRef<HTMLFormElement>(null);
+  const didMountRef = useRef(false);
+  const scrollToErrRef = useRef(false);
 
   function set<K extends keyof FormValues>(key: K, value: FormValues[K]) {
     setValues((v) => ({ ...v, [key]: value }));
@@ -200,6 +202,7 @@ export function RegistrationFormV2() {
     const e = validateStep(current, values);
     if (e.size > 0) {
       setErrors(e);
+      scrollToErrRef.current = true;
       return;
     }
     if (current === STEPS.length) {
@@ -208,6 +211,27 @@ export function RegistrationFormV2() {
       showStep(current + 1);
     }
   }
+
+  // Scroll to the first error field after validation fails
+  useEffect(() => {
+    if (!scrollToErrRef.current) return;
+    scrollToErrRef.current = false;
+    const firstErr = cardRef.current?.querySelector<HTMLElement>(".has-error");
+    firstErr?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  }, [errors]);
+
+  // Autofocus the first interactive field when the active step changes
+  useEffect(() => {
+    if (!didMountRef.current) { didMountRef.current = true; return; }
+    const selector = [
+      '.step-panel.active input:not([type="checkbox"]):not([type="file"])',
+      ".step-panel.active select",
+      ".step-panel.active textarea",
+      ".step-panel.active .segmented button:first-child",
+    ].join(", ");
+    const el = cardRef.current?.querySelector<HTMLElement>(selector);
+    el?.focus({ preventScroll: false });
+  }, [current]);
 
   // Enter to advance (except in textareas/checkbox)
   useEffect(() => {
@@ -542,6 +566,7 @@ export function RegistrationFormV2() {
                   <label htmlFor="portfolio2">Portfolio II <span className="req">●</span></label>
                   <input
                     id="portfolio2"
+                    placeholder="e.g. India"
                     value={values.portfolio2}
                     onChange={(e) => set("portfolio2", e.target.value)}
                   />
@@ -551,6 +576,7 @@ export function RegistrationFormV2() {
                   <label htmlFor="portfolio3">Portfolio III <span className="req">●</span></label>
                   <input
                     id="portfolio3"
+                    placeholder="e.g. France"
                     value={values.portfolio3}
                     onChange={(e) => set("portfolio3", e.target.value)}
                   />
@@ -705,18 +731,18 @@ export function RegistrationFormV2() {
                   );
                 })}
               </dl>
-              <label className="consent">
-                <input
-                  type="checkbox"
-                  checked={values.consent}
-                  onChange={(e) => set("consent", e.target.checked)}
-                />
-                <span className="text">
-                  I confirm the details above are accurate and consent to Legatio 4.0 contacting me at the
-                  provided email and phone.
-                </span>
-              </label>
-              <div className={fieldClass("consent")} style={{ marginTop: 8 }}>
+              <div className={fieldClass("consent")} style={{ marginTop: 22 }}>
+                <label className="consent" style={{ marginTop: 0 }}>
+                  <input
+                    type="checkbox"
+                    checked={values.consent}
+                    onChange={(e) => set("consent", e.target.checked)}
+                  />
+                  <span className="text">
+                    I confirm the details above are accurate and consent to Legatio 4.0 contacting me at the
+                    provided email and phone.
+                  </span>
+                </label>
                 <span className="err">Please accept to submit</span>
               </div>
               {serverError && (
@@ -746,9 +772,10 @@ export function RegistrationFormV2() {
               onClick={() => next()}
             >
               {current === STEPS.length
-                ? submitting ? "Submitting…" : "Submit registration"
-                : "Continue"}{" "}
-              <span className="arr">→</span>
+                ? submitting
+                  ? "Submitting…"
+                  : <>Submit registration <span className="arr">→</span></>
+                : <>Continue <span className="arr">→</span></>}
             </button>
           </div>
         </div>
