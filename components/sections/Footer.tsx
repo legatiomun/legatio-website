@@ -55,7 +55,7 @@ export function Footer() {
       <div className="border-t border-line">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-5 py-5 text-xs text-mute sm:px-8">
           <p>© 2026 Legatio · DPS Siliguri</p>
-          <p>तमसो मा ज्योतिर्गमय</p>
+          <p lang="sa">तमसो मा ज्योतिर्गमय</p>
         </div>
       </div>
     </footer>

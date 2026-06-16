@@ -111,7 +111,7 @@ export default function TeamPage() {
         </div>
       </nav>
 
-      <main className="container">
+      <main id="main" className="container">
         {/* PATRONS ────────────────────────────────────────── */}
         <section className="group" id="patrons">
           <div className="group-head">

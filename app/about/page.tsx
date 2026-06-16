@@ -16,7 +16,7 @@ export default function AboutPage() {
   return (
     <>
       <Navigation />
-      <main className="bg-paper pb-24">
+      <main id="main" className="bg-paper pb-24">
         <PageHeader
           eyebrow="About"
           title={<>The Kurukshetra of Diplomacy.</>}

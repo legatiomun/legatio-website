@@ -70,7 +70,7 @@ export function Navigation() {
                 (m) => pathname === m || pathname.startsWith(m + "/"),
               );
               return (
-                <Link key={l.href} href={l.href} className={active ? "active" : undefined}>
+                <Link key={l.href} href={l.href} className={active ? "active" : undefined} aria-current={active ? "page" : undefined}>
                   {l.label}
                 </Link>
               );
@@ -101,9 +101,10 @@ export function Navigation() {
 
       {/* Mobile drawer — kept outside <header> so its fixed positioning isn't
           trapped inside the header's backdrop-filter containing block. */}
-      <div
+      <nav
         id="nav-drawer"
         className={`nav-drawer${open ? " is-open" : ""}`}
+        aria-label="Mobile navigation"
         aria-hidden={!open}
       >
         <ul>
@@ -116,6 +117,7 @@ export function Navigation() {
                 <Link
                   href={l.href}
                   className={active ? "active" : undefined}
+                  aria-current={active ? "page" : undefined}
                   tabIndex={open ? 0 : -1}
                 >
                   {l.label}
@@ -130,7 +132,7 @@ export function Navigation() {
           </li>
           <li className="nav-drawer-meta">31 Jul – 02 Aug 2026 · DPS Siliguri</li>
         </ul>
-      </div>
+      </nav>
     </>
   );
 }

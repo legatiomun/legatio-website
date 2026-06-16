@@ -25,6 +25,7 @@ export function FAQList() {
           <RevealStagger className="divide-y divide-line border-y border-line" stagger={0.05}>
             {section.items.map((item, iIdx) => {
               const id = `${sIdx}-${iIdx}`;
+              const panelId = `faq-panel-${sIdx}-${iIdx}`;
               const isOpen = open === id;
               const displayNum = ++runningIndex;
               return (
@@ -34,6 +35,7 @@ export function FAQList() {
                       type="button"
                       onClick={() => setOpen(isOpen ? null : id)}
                       aria-expanded={isOpen}
+                      aria-controls={panelId}
                       className="flex w-full items-start gap-5 py-7 text-left"
                     >
                       <span
@@ -64,7 +66,10 @@ export function FAQList() {
                     <AnimatePresence initial={false}>
                       {isOpen && (
                         <motion.div
+                          id={panelId}
                           key="content"
+                          role="region"
+                          aria-label={item.q}
                           initial={{ height: 0, opacity: 0 }}
                           animate={{ height: "auto", opacity: 1 }}
                           exit={{ height: 0, opacity: 0 }}

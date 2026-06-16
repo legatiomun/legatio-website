@@ -78,7 +78,7 @@ export default function VenuePage() {
         </div>
       </header>
 
-      <main className="container" style={{ padding: "70px 40px 40px" }}>
+      <main id="main" className="container" style={{ padding: "70px 40px 40px" }}>
         <div className="venue-grid">
           {/* ── Campus card ── */}
           <article className="venue-campus">

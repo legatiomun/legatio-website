@@ -59,7 +59,7 @@ export function Colophon({ contextLine = "Edition 4 · Printed in cream & ink" }
         </div>
 
         <div className="colophon-shloka">
-          <span className="dev">तमसो मा ज्योतिर्गमय</span>
+          <span className="dev" lang="sa">तमसो मा ज्योतिर्गमय</span>
           <small>— Lead me from darkness to light —</small>
         </div>
 

@@ -15,6 +15,7 @@ export default function SchedulePage() {
     <>
       <Navigation />
 
+      <main id="main">
       {/* PAGE HEADER (compact) */}
       <section className="page-header page-header-compact">
         <div className="container">
@@ -71,6 +72,7 @@ export default function SchedulePage() {
       </section>
 
       <Colophon contextLine="Edition 4 · The Three Days" />
+      </main>
     </>
   );
 }

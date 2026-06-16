@@ -13,7 +13,7 @@ export default function RegisterPage() {
     <>
       <Navigation />
 
-      <main className="page">
+      <main id="main" className="page">
         <div className="container">
           <div className="intro">
             <div className="tag">Registration</div>

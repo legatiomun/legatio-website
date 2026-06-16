@@ -85,10 +85,12 @@ export function ScheduleTabs() {
               return (
                 <button
                   key={d.label}
+                  id={`day-tab-${i + 1}`}
                   className="tab"
                   role="tab"
                   type="button"
                   aria-selected={i === active}
+                  aria-controls={`day-${i + 1}`}
                   onClick={() => go(i)}
                   onKeyDown={(e) => {
                     if (e.key === "ArrowRight") go(i + 1);
@@ -126,6 +128,8 @@ export function ScheduleTabs() {
                 key={`${d.label}-${animKey}`}
                 className="day"
                 id={`day-${i + 1}`}
+                role="tabpanel"
+                aria-labelledby={`day-tab-${i + 1}`}
                 data-active={i === active ? "true" : undefined}
               >
                 <div className="day-head">

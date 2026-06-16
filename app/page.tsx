@@ -17,6 +17,7 @@ export default function HomePage() {
       <ChakraSymbol />
       <Navigation />
 
+      <main id="main">
       {/* HERO ─────────────────────────────────────────────── */}
       <section className="hero">
         <svg className="chakra-bg" aria-hidden="true">
@@ -186,7 +187,7 @@ export default function HomePage() {
               <div className="label">
                 W<span className="ital">ar</span>
               </div>
-              <div className="dev-tag">युद्ध</div>
+              <div className="dev-tag" lang="sa">युद्ध</div>
             </div>
             <p>
               The conch is blown. The field is set. The moment demands everything — knowledge, character, the courage
@@ -219,7 +220,7 @@ export default function HomePage() {
               <div className="label">
                 P<span className="ital">eace</span>
               </div>
-              <div className="dev-tag">शान्ति</div>
+              <div className="dev-tag" lang="sa">शान्ति</div>
             </div>
             <p>
               Where words become weapons of wisdom. Where dialogue is not retreat, but the harder, finer discipline.
@@ -497,7 +498,7 @@ export default function HomePage() {
       </section>
 
       <Colophon />
-
+      </main>
     </>
   );
 }

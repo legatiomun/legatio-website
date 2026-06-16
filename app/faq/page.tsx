@@ -13,7 +13,7 @@ export default function FAQPage() {
   return (
     <>
       <Navigation />
-      <main className="bg-paper pb-24">
+      <main id="main" className="bg-paper pb-24">
         <PageHeader
           eyebrow="FAQ"
           title={<>Frequently asked questions.</>}

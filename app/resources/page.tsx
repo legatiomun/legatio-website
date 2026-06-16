@@ -14,7 +14,7 @@ export default function ResourcesPage() {
   return (
     <>
       <Navigation />
-      <main className="bg-paper pb-24">
+      <main id="main" className="bg-paper pb-24">
         <PageHeader
           eyebrow="Resources"
           title={<>The delegate&rsquo;s handbook.</>}

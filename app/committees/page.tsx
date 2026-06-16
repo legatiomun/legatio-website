@@ -118,7 +118,7 @@ export default function CommitteesPage() {
         </div>
       </nav>
 
-      <main className="container">
+      <main id="main" className="container">
         {grouped.map((g) => (
           <section
             key={g.tier}

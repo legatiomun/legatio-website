@@ -282,9 +282,11 @@ export function RegistrationFormV2() {
             <div className={`step-panel${current === 1 ? " active" : ""}`}>
               <div className="grid-2">
                 <div className={fieldClass("fullName")}>
-                  <label>Full name <span className="req">●</span></label>
+                  <label htmlFor="fullName">Full name <span className="req">●</span></label>
                   <input
+                    id="fullName"
                     name="fullName"
+                    autoComplete="name"
                     placeholder="As it should appear on your placard"
                     value={values.fullName}
                     onChange={(e) => set("fullName", e.target.value)}
@@ -292,8 +294,9 @@ export function RegistrationFormV2() {
                   <span className="err">Required</span>
                 </div>
                 <div className={fieldClass("gender")}>
-                  <label>Gender <span className="req">●</span></label>
+                  <label htmlFor="gender">Gender <span className="req">●</span></label>
                   <select
+                    id="gender"
                     name="gender"
                     value={values.gender}
                     onChange={(e) => set("gender", e.target.value)}
@@ -307,8 +310,9 @@ export function RegistrationFormV2() {
                   <span className="err">Required</span>
                 </div>
                 <div className={fieldClass("age")}>
-                  <label>Age <span className="req">●</span></label>
+                  <label htmlFor="age">Age <span className="req">●</span></label>
                   <input
+                    id="age"
                     name="age"
                     type="number"
                     min={10}
@@ -320,8 +324,9 @@ export function RegistrationFormV2() {
                   <span className="err">Enter a valid age (10–30)</span>
                 </div>
                 <div className={fieldClass("grade")}>
-                  <label>Class / Grade <span className="req">●</span></label>
+                  <label htmlFor="grade">Class / Grade <span className="req">●</span></label>
                   <input
+                    id="grade"
                     name="grade"
                     placeholder="e.g. Class XI"
                     value={values.grade}
@@ -336,29 +341,32 @@ export function RegistrationFormV2() {
             <div className={`step-panel${current === 2 ? " active" : ""}`}>
               <div className="grid-2">
                 <div className={fieldClass("school")}>
-                  <label>School / Institution <span className="req">●</span></label>
+                  <label htmlFor="school">School / Institution <span className="req">●</span></label>
                   <input
+                    id="school"
                     value={values.school}
                     onChange={(e) => set("school", e.target.value)}
                   />
                   <span className="err">Required</span>
                 </div>
                 <div className={fieldClass("city")}>
-                  <label>City <span className="req">●</span></label>
-                  <input value={values.city} onChange={(e) => set("city", e.target.value)} />
+                  <label htmlFor="city">City <span className="req">●</span></label>
+                  <input id="city" value={values.city} onChange={(e) => set("city", e.target.value)} />
                   <span className="err">Required</span>
                 </div>
                 <div className={fieldClass("faAdvisorName")}>
-                  <label>Faculty advisor</label>
+                  <label htmlFor="faAdvisorName">Faculty advisor</label>
                   <input
+                    id="faAdvisorName"
                     placeholder="Optional"
                     value={values.faAdvisorName}
                     onChange={(e) => set("faAdvisorName", e.target.value)}
                   />
                 </div>
                 <div className={fieldClass("faAdvisorContact")}>
-                  <label>Advisor contact</label>
+                  <label htmlFor="faAdvisorContact">Advisor contact</label>
                   <input
+                    id="faAdvisorContact"
                     placeholder="Email or phone"
                     value={values.faAdvisorContact}
                     onChange={(e) => set("faAdvisorContact", e.target.value)}
@@ -371,9 +379,11 @@ export function RegistrationFormV2() {
             <div className={`step-panel${current === 3 ? " active" : ""}`}>
               <div className="grid-2">
                 <div className={fieldClass("email")}>
-                  <label>Email <span className="req">●</span></label>
+                  <label htmlFor="email">Email <span className="req">●</span></label>
                   <input
+                    id="email"
                     type="email"
+                    autoComplete="email"
                     placeholder="you@school.edu"
                     value={values.email}
                     onChange={(e) => set("email", e.target.value)}
@@ -381,9 +391,11 @@ export function RegistrationFormV2() {
                   <span className="err">Enter a valid email</span>
                 </div>
                 <div className={fieldClass("phone")}>
-                  <label>Phone <span className="req">●</span></label>
+                  <label htmlFor="phone">Phone <span className="req">●</span></label>
                   <input
+                    id="phone"
                     type="tel"
+                    autoComplete="tel"
                     placeholder="+91 …"
                     value={values.phone}
                     onChange={(e) => set("phone", e.target.value)}
@@ -391,8 +403,9 @@ export function RegistrationFormV2() {
                   <span className="err">Enter a valid phone number</span>
                 </div>
                 <div className={fieldClass("emergencyName")}>
-                  <label>Emergency contact — name <span className="req">●</span></label>
+                  <label htmlFor="emergencyName">Emergency contact — name <span className="req">●</span></label>
                   <input
+                    id="emergencyName"
                     placeholder="A guardian we can reach"
                     value={values.emergencyName}
                     onChange={(e) => set("emergencyName", e.target.value)}
@@ -400,9 +413,11 @@ export function RegistrationFormV2() {
                   <span className="err">Required</span>
                 </div>
                 <div className={fieldClass("emergencyPhone")}>
-                  <label>Emergency contact — phone <span className="req">●</span></label>
+                  <label htmlFor="emergencyPhone">Emergency contact — phone <span className="req">●</span></label>
                   <input
+                    id="emergencyPhone"
                     type="tel"
+                    autoComplete="off"
                     value={values.emergencyPhone}
                     onChange={(e) => set("emergencyPhone", e.target.value)}
                   />
@@ -414,8 +429,8 @@ export function RegistrationFormV2() {
             {/* STEP 4 — Experience */}
             <div className={`step-panel${current === 4 ? " active" : ""}`}>
               <div className={fieldClass("experienceLevel")}>
-                <label>Experience level <span className="req">●</span></label>
-                <div className="segmented seg-4" role="group">
+                <label id="experienceLevel-label">Experience level <span className="req">●</span></label>
+                <div className="segmented seg-4" role="group" aria-labelledby="experienceLevel-label">
                   {(["First-timer", "Beginner", "Intermediate", "Advanced"] as const).map((lvl) => (
                     <button
                       key={lvl}
@@ -432,8 +447,9 @@ export function RegistrationFormV2() {
               {values.experienceLevel && values.experienceLevel !== "First-timer" && (
                 <>
                   <div className={fieldClass("conferencesAttended")}>
-                    <label>Conferences attended</label>
+                    <label htmlFor="conferencesAttended">Conferences attended</label>
                     <textarea
+                      id="conferencesAttended"
                       placeholder="e.g. Legatio 3.0 — UNHRC (2025)"
                       value={values.conferencesAttended}
                       onChange={(e: ChangeEvent<HTMLTextAreaElement>) => set("conferencesAttended", e.target.value)}
@@ -441,8 +457,9 @@ export function RegistrationFormV2() {
                     <span className="hint">Optional — helps with allotments.</span>
                   </div>
                   <div className={fieldClass("bestAwards")}>
-                    <label>Notable awards</label>
+                    <label htmlFor="bestAwards">Notable awards</label>
                     <textarea
+                      id="bestAwards"
                       placeholder="Best Delegate / High Commendation / etc."
                       value={values.bestAwards}
                       onChange={(e: ChangeEvent<HTMLTextAreaElement>) => set("bestAwards", e.target.value)}
@@ -456,8 +473,9 @@ export function RegistrationFormV2() {
             <div className={`step-panel${current === 5 ? " active" : ""}`}>
               <div className="grid-3">
                 <div className={fieldClass("committee1")}>
-                  <label>Choice I <span className="req">●</span></label>
+                  <label htmlFor="committee1">Choice I <span className="req">●</span></label>
                   <select
+                    id="committee1"
                     value={values.committee1}
                     onChange={(e) => set("committee1", e.target.value)}
                   >
@@ -473,8 +491,9 @@ export function RegistrationFormV2() {
                   <span className="err">Required</span>
                 </div>
                 <div className={fieldClass("committee2")}>
-                  <label>Choice II <span className="req">●</span></label>
+                  <label htmlFor="committee2">Choice II <span className="req">●</span></label>
                   <select
+                    id="committee2"
                     value={values.committee2}
                     onChange={(e) => set("committee2", e.target.value)}
                   >
@@ -490,8 +509,9 @@ export function RegistrationFormV2() {
                   <span className="err">Required</span>
                 </div>
                 <div className={fieldClass("committee3")}>
-                  <label>Choice III <span className="req">●</span></label>
+                  <label htmlFor="committee3">Choice III <span className="req">●</span></label>
                   <select
+                    id="committee3"
                     value={values.committee3}
                     onChange={(e) => set("committee3", e.target.value)}
                   >
@@ -509,8 +529,9 @@ export function RegistrationFormV2() {
               </div>
               <div className="grid-3" style={{ marginTop: 18 }}>
                 <div className={fieldClass("portfolio1")}>
-                  <label>Portfolio I <span className="req">●</span></label>
+                  <label htmlFor="portfolio1">Portfolio I <span className="req">●</span></label>
                   <input
+                    id="portfolio1"
                     placeholder="e.g. United States"
                     value={values.portfolio1}
                     onChange={(e) => set("portfolio1", e.target.value)}
@@ -518,16 +539,18 @@ export function RegistrationFormV2() {
                   <span className="err">Required</span>
                 </div>
                 <div className={fieldClass("portfolio2")}>
-                  <label>Portfolio II <span className="req">●</span></label>
+                  <label htmlFor="portfolio2">Portfolio II <span className="req">●</span></label>
                   <input
+                    id="portfolio2"
                     value={values.portfolio2}
                     onChange={(e) => set("portfolio2", e.target.value)}
                   />
                   <span className="err">Required</span>
                 </div>
                 <div className={fieldClass("portfolio3")}>
-                  <label>Portfolio III <span className="req">●</span></label>
+                  <label htmlFor="portfolio3">Portfolio III <span className="req">●</span></label>
                   <input
+                    id="portfolio3"
                     value={values.portfolio3}
                     onChange={(e) => set("portfolio3", e.target.value)}
                   />
@@ -539,8 +562,8 @@ export function RegistrationFormV2() {
             {/* STEP 6 — Logistics */}
             <div className={`step-panel${current === 6 ? " active" : ""}`}>
               <div className={fieldClass("accommodation")}>
-                <label>Accommodation <span className="req">●</span></label>
-                <div className="segmented seg-3" role="group">
+                <label id="accommodation-label">Accommodation <span className="req">●</span></label>
+                <div className="segmented seg-3" role="group" aria-labelledby="accommodation-label">
                   {(["Required", "Not required", "Undecided"] as const).map((opt) => (
                     <button
                       key={opt}
@@ -555,8 +578,9 @@ export function RegistrationFormV2() {
                 <span className="err">Pick one to continue</span>
               </div>
               <div className={fieldClass("notes")}>
-                <label>Notes for the Secretariat</label>
+                <label htmlFor="notes">Notes for the Secretariat</label>
                 <textarea
+                  id="notes"
                   placeholder="Anything you'd like us to know."
                   value={values.notes}
                   onChange={(e: ChangeEvent<HTMLTextAreaElement>) => set("notes", e.target.value)}
@@ -598,11 +622,12 @@ export function RegistrationFormV2() {
               </div>
 
               <div className={fieldClass("paymentScreenshot")}>
-                <label>Portal payment screenshot <span className="req">●</span></label>
+                <label htmlFor="paymentScreenshot">Portal payment screenshot <span className="req">●</span></label>
                 <div className="file-upload">
                   {!values.paymentScreenshot ? (
-                    <label className="file-pick">
+                    <label className="file-pick" htmlFor="paymentScreenshot">
                       <input
+                        id="paymentScreenshot"
                         type="file"
                         accept="image/*"
                         onChange={(e) => {

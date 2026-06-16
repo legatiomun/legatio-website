@@ -26,14 +26,14 @@ function Block({ block }: { block: ResourceBlock }) {
       );
     case "tip":
       return (
-        <div className="max-w-prose border-l-2 border-accent bg-cream/60 px-5 py-4">
+        <div className="max-w-prose rounded-none border border-accent/30 bg-accent/5 px-5 py-4">
           <span className="font-mono text-[10px] uppercase tracking-wider text-accent">Tip</span>
           <p className="mt-1.5 font-serif text-[16px] leading-relaxed text-ink/85">{block.text}</p>
         </div>
       );
     case "note":
       return (
-        <div className="max-w-prose border-l-2 border-line bg-paper-deep/40 px-5 py-4">
+        <div className="max-w-prose border border-line bg-paper/60 px-5 py-4">
           <span className="font-mono text-[10px] uppercase tracking-wider text-mute">Note</span>
           <p className="mt-1.5 font-serif text-[16px] leading-relaxed text-ink/75">{block.text}</p>
         </div>
@@ -99,6 +99,7 @@ export function ResourceGuide() {
           <RevealStagger className="divide-y divide-line border-y border-line" stagger={0.05}>
             {section.items.map((item, iIdx) => {
               const id = `${sIdx}-${iIdx}`;
+              const panelId = `res-panel-${sIdx}-${iIdx}`;
               const isOpen = open === id;
               return (
                 <StaggerItem key={item.title}>
@@ -107,6 +108,7 @@ export function ResourceGuide() {
                       type="button"
                       onClick={() => setOpen(isOpen ? null : id)}
                       aria-expanded={isOpen}
+                      aria-controls={panelId}
                       className="flex w-full items-start gap-5 py-7 text-left"
                     >
                       <span
@@ -130,7 +132,10 @@ export function ResourceGuide() {
                     <AnimatePresence initial={false}>
                       {isOpen && (
                         <motion.div
+                          id={panelId}
                           key="content"
+                          role="region"
+                          aria-label={item.title}
                           initial={{ height: 0, opacity: 0 }}
                           animate={{ height: "auto", opacity: 1 }}
                           exit={{ height: 0, opacity: 0 }}
