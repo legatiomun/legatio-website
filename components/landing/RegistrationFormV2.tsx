@@ -634,7 +634,7 @@ export function RegistrationFormV2() {
                   </p>
                   <a
                     className="pay-portal-link"
-                    href="https://entab.online/R-dpsslg"
+                    href="https://entab.online/NR-DPSSLG"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
