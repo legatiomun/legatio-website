@@ -1271,13 +1271,13 @@ img { display: block; max-width: 100%; }
   letter-spacing: 0.18em; color: var(--accent);
   margin-bottom: 4px;
 }
-.eb .role-line {
+.eb .name {
   font-family: var(--font-serif), serif; font-size: 19px;
   color: var(--ink); line-height: 1.2;
   margin: 0;
   letter-spacing: -0.005em;
 }
-.eb .name {
+.eb .role-line {
   font-family: var(--font-serif), serif; font-style: italic;
   font-size: 14px; color: var(--mute);
   margin-top: 4px;
@@ -2745,7 +2745,7 @@ img { display: block; max-width: 100%; }
   /* EB grid */
   .eb { padding: 18px 12px; gap: 14px; grid-template-columns: 52px 1fr auto; }
   .eb .portrait-md { width: 52px; height: 52px; font-size: 12px; }
-  .eb .role-line { font-size: 17px; }
+  .eb .name { font-size: 17px; }
   .eb .link { font-size: 9px; }
 
   /* Registration form */
