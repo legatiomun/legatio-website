@@ -978,6 +978,11 @@ img { display: block; max-width: 100%; }
   color: var(--mute);
 }
 
+.colophon-bot span:last-child {
+  margin-left: auto;
+  text-align: right;
+}
+
 /* ────────────────────────────────────── PAGE HEADER (for sub-pages) */
 .page-header {
   padding: 160px 0 80px; position: relative;

@@ -6,7 +6,7 @@ type Props = {
   contextLine?: string;
 };
 
-export function Colophon({ contextLine = "Edition 4 · Printed in cream & ink" }: Props) {
+export function Colophon({ contextLine = "Edition 4" }: Props) {
   return (
     <footer className="colophon">
       <div className="container">
