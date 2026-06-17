@@ -329,27 +329,27 @@ export default function HomePage() {
               <div className="motif">The conch is blown.</div>
               <ul>
                 <li>
+                  <span className="t">07:30</span>
+                  <span className="e">
+                    Reporting &amp; Registration<small>Delegate check-in opens</small>
+                  </span>
+                </li>
+                <li>
                   <span className="t">09:30</span>
                   <span className="e">
-                    Registration &amp; Briefing<small>Delegate check-in opens</small>
+                    Opening Ceremony<small>Lighting of the lamp</small>
                   </span>
                 </li>
                 <li>
-                  <span className="t">11:00</span>
+                  <span className="t">10:45</span>
                   <span className="e">
-                    Opening Ceremony<small>Inaugural address &amp; lamp</small>
+                    Committee Sessions I &amp; II<small>Roll call · setting the agenda</small>
                   </span>
                 </li>
                 <li>
-                  <span className="t">13:30</span>
+                  <span className="t">17:00</span>
                   <span className="e">
-                    Committee Session I<small>Roll call · setting the agenda</small>
-                  </span>
-                </li>
-                <li>
-                  <span className="t">17:30</span>
-                  <span className="e">
-                    Executive Board Panel<small>The standard, rebuilt</small>
+                    High Tea &amp; Dispersal<small>End of day one</small>
                   </span>
                 </li>
               </ul>
@@ -364,25 +364,25 @@ export default function HomePage() {
                 <li>
                   <span className="t">09:00</span>
                   <span className="e">
-                    Committee Session II<small>Moderated caucuses</small>
+                    EB Panel Discussion<small>The standard, rebuilt</small>
                   </span>
                 </li>
                 <li>
-                  <span className="t">13:00</span>
+                  <span className="t">10:00</span>
                   <span className="e">
-                    Press Conference<small>IPC interrogates the floor</small>
+                    Committee Sessions III &amp; IV<small>Working papers &amp; blocs</small>
                   </span>
                 </li>
                 <li>
-                  <span className="t">15:30</span>
+                  <span className="t">17:30</span>
                   <span className="e">
-                    Committee Session III<small>Working papers &amp; blocs</small>
+                    Socials<small>The evening, built for friendships</small>
                   </span>
                 </li>
                 <li>
-                  <span className="t">20:00</span>
+                  <span className="t">19:00</span>
                   <span className="e">
-                    Delegate Social<small>Across the campus</small>
+                    Dinner &amp; Dispersal<small>End of day two</small>
                   </span>
                 </li>
               </ul>
@@ -395,27 +395,27 @@ export default function HomePage() {
               <div className="motif">The dust, settled.</div>
               <ul>
                 <li>
-                  <span className="t">09:00</span>
+                  <span className="t">08:00</span>
                   <span className="e">
-                    Committee Session IV<small>Draft resolutions tabled</small>
+                    Committee Sessions V–VII<small>Final rounds of debate</small>
                   </span>
                 </li>
                 <li>
-                  <span className="t">12:30</span>
+                  <span className="t">15:45</span>
                   <span className="e">
-                    Voting Procedure<small>The gavel falls</small>
+                    Grand Press Conference<small>IPC convenes every committee</small>
                   </span>
                 </li>
                 <li>
-                  <span className="t">15:00</span>
+                  <span className="t">17:15</span>
                   <span className="e">
                     Closing Ceremony<small>Awards &amp; valedictory</small>
                   </span>
                 </li>
                 <li>
-                  <span className="t">17:00</span>
+                  <span className="t">20:15</span>
                   <span className="e">
-                    Conch sounds, anew<small>Departure &amp; farewells</small>
+                    Dispersal<small>Departure &amp; farewells</small>
                   </span>
                 </li>
               </ul>
