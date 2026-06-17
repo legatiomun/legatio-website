@@ -38,7 +38,7 @@ export default function ResourcesPage() {
             <a href="mailto:legatiomun@gmail.com" className="text-accent hover:underline">
               legatiomun@gmail.com
             </a>{" "}
-            or call +91 89188 49230.
+            or call +91 98325 56820.
           </p>
         </section>
       </main>
