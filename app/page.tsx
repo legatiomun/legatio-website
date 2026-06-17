@@ -453,7 +453,17 @@ export default function HomePage() {
             weight of consequence.
           </span>
           <div className="attr">
-            <div className="attr-portrait">SA</div>
+            <div className="attr-portrait">
+              <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true" style={{ width: 32, height: 32 }}>
+                <circle cx="50" cy="50" r="40" />
+                <circle cx="50" cy="50" r="24" />
+                <circle cx="50" cy="50" r="5" fill="currentColor" stroke="none" />
+                <line x1="50" y1="10" x2="50" y2="90" />
+                <line x1="10" y1="50" x2="90" y2="50" />
+                <line x1="22" y1="22" x2="78" y2="78" />
+                <line x1="78" y1="22" x2="22" y2="78" />
+              </svg>
+            </div>
             <div className="attr-name">
               Mrs. Snigdha Agarwal
               <small>President · Legatio 4.0</small>
