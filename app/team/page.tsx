@@ -163,8 +163,7 @@ export default function TeamPage() {
             <div>
               <h2>The Executive Board.</h2>
               <p className="desc">
-                Chairs, Vice-Chairs and Crisis Directors for each committee. The full list publishes one month
-                before the conference.
+                Chairs, Vice-Chairs, and Crisis Directors across all fifteen committees.
               </p>
             </div>
             <div className="meta">
