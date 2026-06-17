@@ -290,8 +290,8 @@ function EbCard({ officer }: { officer: Officer }) {
       </div>
       <div className="body">
         <div className="committee">{officer.committee ?? ""}</div>
-        <p className="role-line">{officer.role}</p>
         <div className="name">{officer.placeholder ? "Appointment pending" : officer.name}</div>
+        <p className="role-line">{officer.role}</p>
       </div>
       <Link href="/committees" className="link">
         Committee →
