@@ -20,7 +20,7 @@ export default function AboutPage() {
         <PageHeader
           eyebrow="About"
           title={<>The Kurukshetra of Diplomacy.</>}
-          lede="Legatio is DPS Siliguri's flagship Model United Nations conference. Now in its fourth edition, the conference returns under the theme of War and Peace — rooted in the Mahabharata and the tradition of Chanakya Neeti."
+          lede="Legatio is DPS Siliguri's flagship Model United Nations conference. Now in its fourth edition, the conference returns under the theme of War and Peace, rooted in the Mahabharata and the tradition of Chanakya Neeti."
         />
 
         {/* Opening prose */}
@@ -30,7 +30,7 @@ export default function AboutPage() {
               <p>
                 Born from a conviction that young minds are capable of extraordinary things when placed
                 in extraordinary environments, Legatio has grown across three editions into the most
-                anticipated MUN in the North-Eastern circuit — and one of the most respected in the
+                anticipated MUN in the North-Eastern circuit, and one of the most respected in the
                 country.
               </p>
             </Reveal>
@@ -46,7 +46,7 @@ export default function AboutPage() {
               <p>
                 Rooted in the philosophy of the Mahabharata and anchored by the tagline{" "}
                 <em>Kurukshetra of Diplomacy</em>, this edition invites every delegate to step into
-                that ancient field — not with weapons, but with words.
+                that ancient field, not with weapons, but with words.
               </p>
             </Reveal>
           </div>
@@ -59,7 +59,7 @@ export default function AboutPage() {
               <p className="text-xs uppercase tracking-[0.22em] text-accent">A founding conviction</p>
             </Reveal>
             <blockquote className="mt-8 font-serif text-3xl italic leading-snug sm:text-5xl">
-              <WordReveal text="“Every delegate stands as Arjuna, compelled not by comfort but by duty — tested not by ease but by the full weight of consequence.”" />
+              <WordReveal text=””Every delegate stands as Arjuna, compelled not by comfort but by duty, tested not by ease but by the full weight of consequence.”” />
             </blockquote>
           </div>
         </section>
@@ -141,7 +141,7 @@ export default function AboutPage() {
                           {para}
                         </p>
                       ))}
-                      <p className="pt-2 text-sm text-mute">— {l.closing}</p>
+                      <p className="pt-2 text-sm text-mute">{l.closing}</p>
                     </div>
                   </article>
                 </Reveal>

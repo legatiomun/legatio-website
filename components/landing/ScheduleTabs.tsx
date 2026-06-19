@@ -12,9 +12,9 @@ const TITLE_PARTS: Array<{ pre: string; em: string; post: string }> = [
 ];
 
 const DAY_MOTIFS: string[] = [
-  "— the field is set, the moment arrives —",
-  "— the arrows are drawn, the blocs are tested —",
-  "— the gavel falls, the dust, settled —",
+  "the field is set, the moment arrives",
+  "the arrows are drawn, the blocs are tested",
+  "the gavel falls, the dust, settled",
 ];
 
 const KIND_LABEL: Record<SessionKind, string> = {

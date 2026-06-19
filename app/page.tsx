@@ -72,7 +72,7 @@ export default function HomePage() {
             <div className="col">
               <div className="lbl">The Days</div>
               <div className="v">
-                31 Jul — 02 Aug<small>Friday — Sunday · 2026</small>
+                31 Jul – 02 Aug<small>Friday – Sunday · 2026</small>
               </div>
             </div>
             <div className="sep" aria-hidden="true" />
@@ -132,17 +132,17 @@ export default function HomePage() {
                 <span className="yatra" style={{ color: "var(--ink)" }}>
                   Legatio
                 </span>{" "}
-                is the flagship Model United Nations conference of Delhi Public School, Siliguri — and the most
+                is the flagship Model United Nations conference of Delhi Public School, Siliguri, and the most
                 anticipated MUN of the Indian North-Eastern circuit. Born from a conviction that young minds are
                 capable of extraordinary things when placed in extraordinary environments.
               </p>
               <p>
                 Now entering its <strong>fourth chapter</strong>, we return under the theme of{" "}
-                <em>War &amp; Peace</em> — rooted in the philosophy of the Mahabharata and anchored by the tagline{" "}
+                <em>War &amp; Peace</em>, rooted in the philosophy of the Mahabharata and anchored by the tagline{" "}
                 <strong>Kurukshetra of Diplomacy</strong>.
               </p>
               <p>
-                Where every delegate stands as Arjuna — compelled not by comfort but by duty, tested not by ease but
+                Where every delegate stands as Arjuna, compelled not by comfort but by duty, tested not by ease but
                 by the full weight of consequence. The conch is blown. The field is set. The standard, restored.
               </p>
               <p style={{ marginTop: 24 }}>
@@ -173,7 +173,7 @@ export default function HomePage() {
               <br />
               in human <em>civilisation.</em>
             </h2>
-            <div className="sub">— a contrast between what destroys and what endures —</div>
+            <div className="sub">a contrast between what destroys and what endures</div>
           </div>
         </div>
 
@@ -183,14 +183,14 @@ export default function HomePage() {
               <use href="#chakra" />
             </svg>
             <div>
-              <div className="topline">— part the first</div>
+              <div className="topline">part the first</div>
               <div className="label">
                 W<span className="ital">ar</span>
               </div>
               <div className="dev-tag" lang="sa">युद्ध</div>
             </div>
             <p>
-              The conch is blown. The field is set. The moment demands everything — knowledge, character, the courage
+              The conch is blown. The field is set. The moment demands everything: knowledge, character, the courage
               to hold a position when the world pushes back.
             </p>
           </div>
@@ -216,7 +216,7 @@ export default function HomePage() {
               <use href="#chakra" />
             </svg>
             <div>
-              <div className="topline">— part the second</div>
+              <div className="topline">part the second</div>
               <div className="label">
                 P<span className="ital">eace</span>
               </div>
@@ -243,7 +243,7 @@ export default function HomePage() {
               textWrap: "pretty",
             }}
           >
-            “Hinging upon the timeless philosophy of the Mahabharata, we recreate the intensity of the Kurukshetra —
+            “Hinging upon the timeless philosophy of the Mahabharata, we recreate the intensity of the Kurukshetra,
             where every delegate stands as Arjuna, compelled not by comfort but by duty.”
           </div>
         </div>
@@ -318,7 +318,7 @@ export default function HomePage() {
               <br />
               as one story.
             </h2>
-            <div className="sub">— from the blowing of the conch to the settling of the dust —</div>
+            <div className="sub">from the blowing of the conch to the settling of the dust</div>
           </div>
 
           <div className="cantos-grid">
@@ -449,7 +449,7 @@ export default function HomePage() {
         <div className="container voice-inner">
           <div className="tag">From the President&apos;s Desk</div>
           <span className="q">
-            Every delegate stands as Arjuna — compelled not by comfort but by duty, tested not by ease but by the full
+            Every delegate stands as Arjuna, compelled not by comfort but by duty, tested not by ease but by the full
             weight of consequence.
           </span>
           <div className="attr">

@@ -14,7 +14,7 @@ export const FAQ_SECTIONS: FAQSection[] = [
     items: [
       {
         q: "What is Legatio 4.0?",
-        a: "Legatio 4.0 is the fourth edition of DPS Siliguri's flagship Model United Nations — the most prestigious MUN in the regional circuit, themed around War and Peace with the tagline Kurukshetra of Diplomacy.",
+        a: "Legatio 4.0 is the fourth edition of DPS Siliguri's flagship Model United Nations, the most prestigious MUN in the regional circuit, themed around War and Peace with the tagline Kurukshetra of Diplomacy.",
       },
       {
         q: "When and where is Legatio 4.0?",
@@ -22,7 +22,7 @@ export const FAQ_SECTIONS: FAQSection[] = [
       },
       {
         q: "Who can participate?",
-        a: "Students from Grade 7 and above from any school — both first-time delegates and experienced MUNers are welcome.",
+        a: "Students from Grade 7 and above from any school. Both first-time delegates and experienced MUNers are welcome.",
       },
       {
         q: "Do I need prior MUN experience?",
@@ -30,7 +30,7 @@ export const FAQ_SECTIONS: FAQSection[] = [
       },
       {
         q: "How many committees are there?",
-        a: "Legatio 4.0 features 15 committees — 12 UN bodies, 2 Indian simulations, and the International Press Corps.",
+        a: "Legatio 4.0 features 15 committees: 12 UN bodies, 2 Indian simulations, and the International Press Corps.",
       },
     ],
   },
@@ -85,7 +85,7 @@ export const FAQ_SECTIONS: FAQSection[] = [
     items: [
       {
         q: "What is the code of conduct?",
-        a: "Diplomatic decorum is expected at all times — respectful debate, formal address, and adherence to committee rules. The Chair reserves the right to issue warnings for disruptive behaviour.",
+        a: "Diplomatic decorum is expected at all times: respectful debate, formal address, and adherence to committee rules. The Chair reserves the right to issue warnings for disruptive behaviour.",
       },
       {
         q: "Who do I contact if I have a problem during the conference?",
@@ -93,7 +93,7 @@ export const FAQ_SECTIONS: FAQSection[] = [
       },
       {
         q: "How do I stay updated on all Legatio 4.0 announcements?",
-        a: "Follow our official Instagram handle @legatio_4.0 and watch out for circulars sent through your school. All key announcements — schedules, deadlines, and updates — will be posted there first.",
+        a: "Follow our official Instagram handle @legatio_4.0 and watch out for circulars sent through your school. All key announcements (schedules, deadlines, and updates) will be posted there first.",
       },
     ],
   },

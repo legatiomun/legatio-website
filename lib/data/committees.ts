@@ -51,7 +51,7 @@ export const COMMITTEES: Committee[] = [
   {
     id: "specpol",
     code: "SPECPOL",
-    name: "UN General Assembly — Special Political & Decolonization Committee",
+    name: "UN General Assembly: Special Political & Decolonization Committee",
     subtitle: "Assembly",
     tier: "Beginner",
     image: "/committees/specpol.png",
@@ -66,7 +66,7 @@ export const COMMITTEES: Committee[] = [
     tier: "Beginner",
     image: "/committees/ipc.png",
     agenda:
-      "Investigative Journalism — Journalism / Photojournalism / Caricatures.",
+      "Investigative Journalism: Journalism / Photojournalism / Caricatures.",
     note: "Submissions across written reporting, photojournalism, and political cartooning.",
   },
   {
@@ -132,7 +132,7 @@ export const COMMITTEES: Committee[] = [
   {
     id: "unsc-ctc",
     code: "UNSC-CTC",
-    name: "UN Security Council — Counter Terrorism Committee",
+    name: "UN Security Council: Counter Terrorism Committee",
     subtitle: "Council",
     tier: "Advanced",
     image: "/committees/unsc-ctc.png",
@@ -146,7 +146,7 @@ export const COMMITTEES: Committee[] = [
     subtitle: "Crisis",
     tier: "Advanced",
     image: "/committees/1962-ccc.png",
-    agenda: "Agenda — Classified. Timeline: October to November 1962.",
+    agenda: "Agenda: Classified. Timeline: October to November 1962.",
     classified: true,
     note: "Continuous Crisis Committee. Delegates briefed on arrival.",
   },

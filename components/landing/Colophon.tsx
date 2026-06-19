@@ -60,7 +60,7 @@ export function Colophon({ contextLine = "Edition 4" }: Props) {
 
         <div className="colophon-shloka">
           <span className="dev" lang="sa">तमसो मा ज्योतिर्गमय</span>
-          <small>— Lead me from darkness to light —</small>
+          <small>Lead me from darkness to light</small>
         </div>
 
         <div className="colophon-bot">

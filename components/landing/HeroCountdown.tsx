@@ -26,7 +26,7 @@ export function HeroCountdown() {
   if (!mounted) {
     return (
       <div className="v">
-        — · — · —<small>opens in</small>
+        · · ·<small>opens in</small>
       </div>
     );
   }
