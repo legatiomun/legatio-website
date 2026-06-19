@@ -23,6 +23,30 @@ export default function RegisterPage() {
             <p className="lede">
               A short form. The Secretariat will be in touch with your committee allotment.
             </p>
+            <a
+              href="https://drive.google.com/file/d/1emuU8sTqBOrZS3vKAkNUpK_3hJze65k6/view"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 6,
+                marginTop: 16,
+                fontFamily: "var(--font-mono), monospace",
+                fontSize: 11,
+                letterSpacing: "0.16em",
+                textTransform: "uppercase",
+                color: "var(--accent)",
+                textDecoration: "none",
+                borderBottom: "1px solid color-mix(in oklab, var(--accent) 35%, transparent)",
+                paddingBottom: 2,
+              }}
+            >
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <polygon points="5 3 19 12 5 21 5 3" />
+              </svg>
+              Watch the registration &amp; payment tutorial ↗
+            </a>
             <div className="intro-chips" aria-hidden="true">
               <span className="chip">
                 <strong>31 Jul – 02 Aug</strong> · 2026

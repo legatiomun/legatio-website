@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/sections/Footer";
@@ -59,7 +59,7 @@ export default function AboutPage() {
               <p className="text-xs uppercase tracking-[0.22em] text-accent">A founding conviction</p>
             </Reveal>
             <blockquote className="mt-8 font-serif text-3xl italic leading-snug sm:text-5xl">
-              <WordReveal text=””Every delegate stands as Arjuna, compelled not by comfort but by duty, tested not by ease but by the full weight of consequence.”” />
+              <WordReveal text={"“Every delegate stands as Arjuna, compelled not by comfort but by duty, tested not by ease but by the full weight of consequence.”"} />
             </blockquote>
           </div>
         </section>
