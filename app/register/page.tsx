@@ -96,8 +96,7 @@ export default function RegisterPage() {
                 color: "var(--maroon)",
               }}
             >
-              <strong>Students of DPS Siliguri and DPS Fulbari are strictly not permitted to register through this form.</strong>{" "}
-              Please contact your school&apos;s MUN Co-ordinator for participation details.
+              <strong>Students of DPS Siliguri and DPS Fulbari are strictly not permitted to register through this form.</strong>
             </p>
           </div>
 
