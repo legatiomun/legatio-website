@@ -1,4 +1,4 @@
-import Image from "next/image";
+﻿import Image from "next/image";
 import Link from "next/link";
 
 type Props = {
@@ -36,7 +36,7 @@ export function Colophon({ contextLine = "Edition 4" }: Props) {
           <div>
             <h4>Connect</h4>
             <a href="mailto:legatiomun@gmail.com">legatiomun@gmail.com</a>
-            <a href="tel:+919832556820">+91 98325 56820</a>
+            <a href="tel:+917029594737">+91 70295 94737</a>
             <a href="https://instagram.com/legatio_4.0" target="_blank" rel="noopener noreferrer">@legatio_4.0</a>
             <a href="https://www.dpssiliguri.com/" target="_blank" rel="noopener noreferrer">DPS Siliguri</a>
           </div>

@@ -1,4 +1,4 @@
-import Image from "next/image";
+﻿import Image from "next/image";
 import Link from "next/link";
 
 export function Footer() {
@@ -44,7 +44,7 @@ export function Footer() {
           <p className="text-xs uppercase tracking-wider text-mute">Contact</p>
           <ul className="mt-4 space-y-2 text-sm text-ink/80">
             <li><a href="mailto:legatiomun@gmail.com" className="hover:text-accent">legatiomun@gmail.com</a></li>
-            <li><a href="tel:+919832556820" className="hover:text-accent">+91 98325 56820</a></li>
+            <li><a href="tel:+917029594737" className="hover:text-accent">+91 70295 94737</a></li>
             <li><a href="https://instagram.com/legatio_4.0" target="_blank" rel="noopener noreferrer" className="hover:text-accent">@legatio_4.0</a></li>
             <li><a href="https://www.dpssiliguri.com/" target="_blank" rel="noopener noreferrer" className="hover:text-accent">DPS Siliguri</a></li>
             <li className="pt-2 text-sm text-mute">Delhi Public School, Siliguri<br />West Bengal, India</li>

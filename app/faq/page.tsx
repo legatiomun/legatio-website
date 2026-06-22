@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/sections/Footer";
 import { PageHeader } from "@/components/PageHeader";
@@ -28,7 +28,7 @@ export default function FAQPage() {
             <a href="mailto:legatiomun@gmail.com" className="text-accent hover:underline">
               legatiomun@gmail.com
             </a>{" "}
-            or call +91 98325 56820.
+            or call +91 70295 94737.
           </p>
         </section>
       </main>
