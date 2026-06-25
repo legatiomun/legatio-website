@@ -60,6 +60,7 @@ const HEADERS = [
   "Screenshot Link",
   "Detected Txn ID",        // ← NEW: filled by OCR
   "Consent",
+  "School ID Link",          // ← NEW: appended at end so existing columns don't shift
 ];
 
 /* ────────────────────────────────────────────────────────── HTTP entry */
@@ -81,6 +82,9 @@ function doPost(e) {
     // Save screenshot to Drive and OCR it for a transaction ID
     const { fileLink, fileName, fileId } = saveScreenshot_(body);
     const detectedTxnId = fileId ? extractTransactionId_(fileId) : "";
+
+    // Save school ID card to Drive
+    const schoolId = saveSchoolId_(body);
 
     sheet.appendRow([
       body.submittedAt || new Date().toISOString(),
@@ -112,6 +116,7 @@ function doPost(e) {
       fileLink,
       detectedTxnId,
       body.consent ? "Yes" : "No",
+      schoolId.fileLink,
     ]);
 
     return jsonResponse({ ok: true, id: body.id, txnId: detectedTxnId });
@@ -152,20 +157,40 @@ function ensureHeaderRow_(sheet) {
     sheet.setFrozenRows(1);
     return;
   }
-  // Backfill any missing trailing headers
-  if (firstRow.length < HEADERS.length) {
+  // Ensure every managed header (columns 1..HEADERS.length) matches HEADERS,
+  // WITHOUT touching any columns to the right (e.g. a manual "Approved" column).
+  // We compare cell-by-cell and only rewrite if something in the managed range
+  // differs, so a sheet that already has extra trailing columns is handled
+  // correctly (getLastColumn() may exceed HEADERS.length).
+  let needsWrite = false;
+  for (let i = 0; i < HEADERS.length; i++) {
+    if ((firstRow[i] || "") !== HEADERS[i]) { needsWrite = true; break; }
+  }
+  if (needsWrite) {
     sheet.getRange(1, 1, 1, HEADERS.length).setValues([HEADERS]);
     sheet.getRange(1, 1, 1, HEADERS.length).setFontWeight("bold");
   }
 }
 
 function saveScreenshot_(body) {
-  const dataUrl = body.paymentScreenshot;
+  return saveDataUrlFile_(body.paymentScreenshot, body.paymentScreenshotName, body, "");
+}
+
+function saveSchoolId_(body) {
+  return saveDataUrlFile_(body.schoolIdCard, body.schoolIdCardName, body, "schoolid");
+}
+
+/**
+ * Decode a data: URL and save it to the screenshot Drive folder.
+ * `suffix` is appended to the file name to distinguish file types
+ * (e.g. "schoolid"). Returns { fileLink, fileName, fileId }.
+ */
+function saveDataUrlFile_(dataUrl, fallbackName, body, suffix) {
   if (!dataUrl || !dataUrl.startsWith("data:")) {
-    return { fileLink: "", fileName: body.paymentScreenshotName || "", fileId: "" };
+    return { fileLink: "", fileName: fallbackName || "", fileId: "" };
   }
   const match = dataUrl.match(/^data:([^;]+);base64,(.+)$/);
-  if (!match) return { fileLink: "", fileName: body.paymentScreenshotName || "", fileId: "" };
+  if (!match) return { fileLink: "", fileName: fallbackName || "", fileId: "" };
 
   const mime = match[1];
   const bytes = Utilities.base64Decode(match[2]);
@@ -174,7 +199,8 @@ function saveScreenshot_(body) {
     .replace(/[^a-zA-Z0-9 ]/g, "")
     .trim()
     .replace(/\s+/g, "_");
-  const fileName = `${body.id || Date.now()}__${safeName}.${ext}`;
+  const tag = suffix ? `__${suffix}` : "";
+  const fileName = `${body.id || Date.now()}__${safeName}${tag}.${ext}`;
 
   const blob = Utilities.newBlob(bytes, mime, fileName);
   const folder = DriveApp.getFolderById(SCREENSHOT_FOLDER_ID);

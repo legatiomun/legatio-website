@@ -42,6 +42,8 @@ type FormValues = {
   notes: string;
   paymentScreenshot: string;
   paymentScreenshotName: string;
+  schoolIdCard: string;
+  schoolIdCardName: string;
   consent: boolean;
 };
 
@@ -71,6 +73,8 @@ const INITIAL: FormValues = {
   notes: "",
   paymentScreenshot: "",
   paymentScreenshotName: "",
+  schoolIdCard: "",
+  schoolIdCardName: "",
   consent: false,
 };
 
@@ -138,7 +142,7 @@ function validateStep(step: number, v: FormValues): Set<keyof FormValues> {
     }
   }
   if (step === 6) need("accommodation");
-  if (step === 7) need("paymentScreenshot");
+  if (step === 7) { need("paymentScreenshot"); need("schoolIdCard"); }
   if (step === 8 && !v.consent) errs.add("consent");
   return errs;
 }
@@ -698,6 +702,58 @@ export function RegistrationFormV2() {
                 </div>
                 <span className="err">Upload your portal payment screenshot</span>
               </div>
+
+              <div className={fieldClass("schoolIdCard")}>
+                <label htmlFor="schoolIdCard">School ID card <span className="req">●</span></label>
+                <div className="file-upload">
+                  {!values.schoolIdCard ? (
+                    <label className="file-pick" htmlFor="schoolIdCard">
+                      <input
+                        id="schoolIdCard"
+                        type="file"
+                        accept="image/*"
+                        onChange={(e) => {
+                          const file = e.target.files?.[0];
+                          if (!file) return;
+                          if (file.size > 5 * 1024 * 1024) {
+                            alert("Please keep the image under 5MB.");
+                            e.target.value = "";
+                            return;
+                          }
+                          const reader = new FileReader();
+                          reader.onload = () => {
+                            set("schoolIdCard", reader.result as string);
+                            set("schoolIdCardName", file.name);
+                          };
+                          reader.readAsDataURL(file);
+                        }}
+                      />
+                      <span className="file-pick-icon" aria-hidden>↑</span>
+                      <span className="file-pick-title">Choose school ID card</span>
+                      <span className="file-pick-hint">PNG or JPG · up to 5MB</span>
+                    </label>
+                  ) : (
+                    <div className="file-selected">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={values.schoolIdCard} alt="School ID card preview" />
+                      <div className="file-selected-meta">
+                        <p className="file-selected-name">{values.schoolIdCardName}</p>
+                        <button
+                          type="button"
+                          className="file-change"
+                          onClick={() => {
+                            set("schoolIdCard", "");
+                            set("schoolIdCardName", "");
+                          }}
+                        >
+                          Change
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                </div>
+                <span className="err">Upload a photo of your school ID card</span>
+              </div>
             </div>
 
             {/* STEP 8 — Review */}
@@ -719,6 +775,7 @@ export function RegistrationFormV2() {
                   ["Accommodation", values.accommodation],
                   ["Notes", values.notes],
                   ["Payment screenshot", values.paymentScreenshotName || (values.paymentScreenshot ? "attached" : "")],
+                  ["School ID card", values.schoolIdCardName || (values.schoolIdCard ? "attached" : "")],
                 ].map(([label, value]) => {
                   const empty = !value;
                   return (
