@@ -174,7 +174,9 @@ export function RegistrationFormV2() {
   }
 
   async function submit() {
-    const e = validateStep(8, values);
+    const e7 = validateStep(7, values);
+    const e8 = validateStep(8, values);
+    const e = new Set([...e7, ...e8]);
     if (e.size > 0) { setErrors(e); return; }
     setSubmitting(true);
     setServerError(null);
