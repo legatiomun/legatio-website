@@ -24,13 +24,19 @@ function getInitials(name: string): string {
 
 const EB_MONOGRAM_OVERRIDES: Record<string, string> = {
   SPECPOL: "SPCP",
+  "UNGA-SPECPOL": "SPCP",
   ECOFIN: "ECO",
   UNODC: "UNO",
   BRICS: "BRC",
+  "BRICS+": "BRC",
   "UNSC-CTC": "CTC",
+  UNSC: "UNSC",
   "1962-CCC": "CCC",
+  "Indo-China": "I-C",
   COPUOS: "COP",
+  "UN-COPUOS": "COP",
   "US Senate": "SEN",
+  "US SENATE": "SEN",
   "Lok Sabha": "LS",
 };
 
