@@ -182,9 +182,9 @@ export default function CommitteesPage() {
             <a href="mailto:legatiomun@gmail.com" className="secondary">
               Tier &amp; allotment enquiry <span className="arr">→</span>
             </a>
-            <Link href="/faq" className="secondary">
-              Frequently asked questions <span className="arr">→</span>
-            </Link>
+            <a href="#beginner" className="secondary">
+              Study guides <span className="arr">↑</span>
+            </a>
           </div>
         </div>
       </section>
@@ -241,9 +241,17 @@ function CommitteeCard({
           <Link href="/register" className="c-link">
             {committee.code === "IPC" ? "Apply to the Press" : "Apply for this committee"} <span>→</span>
           </Link>
-          <Link href="/faq" className="c-link">
-            Read the FAQ <span>→</span>
-          </Link>
+          {committee.studyGuides?.map((guide) => (
+            <a
+              key={guide.href}
+              href={guide.href}
+              className="c-link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {guide.label} <span>→</span>
+            </a>
+          ))}
         </div>
       </div>
     </article>

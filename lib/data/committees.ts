@@ -12,6 +12,11 @@ export type Committee = {
   note?: string;
   /** Optional path to an emblem image. When set, the image replaces the SVG seal. */
   image?: string;
+  /** Public PDF study guide links for this committee. IPC has one per press track. */
+  studyGuides?: {
+    label: string;
+    href: string;
+  }[];
 };
 
 export const TIERS: Tier[] = ["Beginner", "Intermediate", "Advanced", "Flagship"];
@@ -35,6 +40,7 @@ export const COMMITTEES: Committee[] = [
     subtitle: "Council",
     tier: "Beginner",
     image: "/committees/unhrc.png",
+    studyGuides: [{ label: "Study Guide", href: "/study-guides/09_UNHRC_Study_Guide.pdf" }],
     agenda:
       "Deliberating upon the protection and promotion of Human Rights amidst Escalating Tensions and Armed Conflict in affected regions with special emphasis on the Middle East.",
   },
@@ -45,6 +51,7 @@ export const COMMITTEES: Committee[] = [
     subtitle: "Commission",
     tier: "Beginner",
     image: "/committees/uncsw.png",
+    studyGuides: [{ label: "Study Guide", href: "/study-guides/06_UNCSW_Study_Guide.pdf" }],
     agenda:
       "Addressing the Disproportionate Impact of Armed Conflicts on Women and the Weaponization of Gender-Based Violence in Occupied Territories and Conflicted Regions.",
   },
@@ -55,6 +62,7 @@ export const COMMITTEES: Committee[] = [
     subtitle: "Assembly",
     tier: "Beginner",
     image: "/committees/specpol.png",
+    studyGuides: [{ label: "Study Guide", href: "/study-guides/13_SPECPOL_Study_Guide.pdf" }],
     agenda:
       "Deliberating upon the Political Instability and Foreign Intervention in Latin America, particularly the Situation in Venezuela and its Impact on Regional Security.",
   },
@@ -65,6 +73,11 @@ export const COMMITTEES: Committee[] = [
     subtitle: "Press",
     tier: "Beginner",
     image: "/committees/ipc.png",
+    studyGuides: [
+      { label: "Journalism Guide", href: "/study-guides/02_JOURNALISM_Study_Guide.pdf" },
+      { label: "Photojournalism Guide", href: "/study-guides/01_PHOTOJOURNALISM_Study_Guide.pdf" },
+      { label: "Caricature Guide", href: "/study-guides/12_CARICATURE_Study_Guide.pdf" },
+    ],
     agenda:
       "Investigative Journalism: Journalism / Photojournalism / Caricatures.",
     note: "Submissions across written reporting, photojournalism, and political cartooning.",
@@ -76,6 +89,7 @@ export const COMMITTEES: Committee[] = [
     subtitle: "Committee",
     tier: "Intermediate",
     image: "/committees/ecofin.png",
+    studyGuides: [{ label: "Study Guide", href: "/study-guides/15_ECOFIN_Study_Guide.pdf" }],
     agenda:
       "Deliberating on the Reformation of the Global Financial Architecture: A Critical Reassessment of the Bretton Woods System in addressing 21st Century Economic Inequalities and Sovereign Autonomy.",
   },
@@ -86,6 +100,7 @@ export const COMMITTEES: Committee[] = [
     subtitle: "Office",
     tier: "Intermediate",
     image: "/committees/unodc.png",
+    studyGuides: [{ label: "Study Guide", href: "/study-guides/14_UNODC_Study_Guide.pdf" }],
     agenda:
       "Addressing the Role of Illicit Drug Trafficking and Small Arms and Light Weapons (SALW) networks in Conflict-Affected Regions in Financing Armed Conflict and Non-State Armed Groups.",
   },
@@ -96,6 +111,7 @@ export const COMMITTEES: Committee[] = [
     subtitle: "Summit",
     tier: "Intermediate",
     image: "/committees/brics.png",
+    studyGuides: [{ label: "Study Guide", href: "/study-guides/05_BRICS_Study_Guide.pdf" }],
     agenda:
       "Deliberating on Challenging Western Dominance over Critical Mineral Supply Chains: Securing BRICS Resource Sovereignty and Strategic Autonomy in the Global Energy Transition.",
   },
@@ -106,6 +122,7 @@ export const COMMITTEES: Committee[] = [
     subtitle: "Cabinet",
     tier: "Intermediate",
     image: "/committees/ccpa.png",
+    studyGuides: [{ label: "Study Guide", href: "/study-guides/04_CCPA_Study_Guide.pdf" }],
     agenda:
       "Deliberating upon the implications of Illegal Immigration, Border Insecurity, and Ethnic Instability in Eastern and North-Eastern India.",
   },
@@ -126,6 +143,7 @@ export const COMMITTEES: Committee[] = [
     subtitle: "Court",
     tier: "Advanced",
     image: "/committees/icj.png",
+    studyGuides: [{ label: "Study Guide", href: "/study-guides/10_ICJ_Study_Guide.pdf" }],
     agenda:
       "The Tribunal on the Kulbhushan Jadhav Case (India vs Pakistan): Determination of State Responsibility for Violations of the Vienna Convention on Consular Relations and Non-Compliance with Orders of the International Court of Justice.",
   },
@@ -146,6 +164,7 @@ export const COMMITTEES: Committee[] = [
     subtitle: "Crisis",
     tier: "Advanced",
     image: "/committees/1962-ccc.png",
+    studyGuides: [{ label: "Study Guide", href: "/study-guides/07_INDO_CHINA_WAR_CABINET_Study_Guide.pdf" }],
     agenda: "Agenda: Classified. Timeline: October to November 1962.",
     classified: true,
     note: "Continuous Crisis Committee. Delegates briefed on arrival.",
@@ -157,6 +176,7 @@ export const COMMITTEES: Committee[] = [
     subtitle: "Forum",
     tier: "Flagship",
     image: "/committees/hlpf.png",
+    studyGuides: [{ label: "Study Guide", href: "/study-guides/08_HLPF_Study_Guide.pdf" }],
     agenda:
       "Reviewing Progress and Challenges in Financing Climate Resilience, Poverty Reduction, and inclusive Sustainable Development under the 2030 Agenda.",
   },
@@ -167,6 +187,7 @@ export const COMMITTEES: Committee[] = [
     subtitle: "Committee",
     tier: "Flagship",
     image: "/committees/copuos.png",
+    studyGuides: [{ label: "Study Guide", href: "/study-guides/11_COPUOS_Study_Guide.pdf" }],
     agenda:
       "Establishing a Legally Binding Framework for the Prevention of an Arms Race in Outer Space (PAROS): Regulating Anti-Satellite (ASAT) Weapons and Cyber Operations Targeting Space Infrastructure.",
   },
@@ -177,6 +198,7 @@ export const COMMITTEES: Committee[] = [
     subtitle: "Senate",
     tier: "Flagship",
     image: "/committees/us-senate.png",
+    studyGuides: [{ label: "Study Guide", href: "/study-guides/03_UNITED_STATES_SENATE_Study_Guide.pdf" }],
     agenda:
       "Congressional Review of Government Transparency, Institutional Accountability, and Legal Oversight in the Release of High-Profile Criminal Investigation Records in the Disclosure of the Epstein Files.",
   },
