@@ -187,7 +187,7 @@ export const COMMITTEES: Committee[] = [
     subtitle: "Committee",
     tier: "Flagship",
     image: "/committees/copuos.png",
-    studyGuides: [{ label: "Study Guide", href: "/study-guides/11_COPUOS_Study_Guide.pdf" }],
+    studyGuides: [{ label: "Study Guide", href: "https://drive.google.com/drive/folders/1xqQSGki2aMLeUchhTbFpyp5-tjqyU4zm?usp=sharing" }],
     agenda:
       "Establishing a Legally Binding Framework for the Prevention of an Arms Race in Outer Space (PAROS): Regulating Anti-Satellite (ASAT) Weapons and Cyber Operations Targeting Space Infrastructure.",
   },
