@@ -89,6 +89,45 @@ type CommitteeField = "committee1" | "committee2" | "committee3";
 
 const isEmail = (s: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s);
 const isPhone = (s: string) => /^[0-9+\- ]{8,}$/.test(s);
+const MAX_UPLOAD_BYTES = 5 * 1024 * 1024;
+const MAX_UPLOAD_EDGE = 1200;
+const UPLOAD_JPEG_QUALITY = 0.72;
+
+function readFileAsDataUrl(file: File): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(String(reader.result ?? ""));
+    reader.onerror = () => reject(reader.error ?? new Error("Could not read file"));
+    reader.readAsDataURL(file);
+  });
+}
+
+async function prepareImageUpload(file: File): Promise<string> {
+  const source = await readFileAsDataUrl(file);
+  if (typeof window === "undefined" || !file.type.startsWith("image/")) return source;
+
+  const img = new window.Image();
+  img.decoding = "async";
+  img.src = source;
+
+  try {
+    await img.decode();
+  } catch {
+    return source;
+  }
+
+  const scale = Math.min(1, MAX_UPLOAD_EDGE / Math.max(img.naturalWidth, img.naturalHeight));
+  const width = Math.max(1, Math.round(img.naturalWidth * scale));
+  const height = Math.max(1, Math.round(img.naturalHeight * scale));
+  const canvas = document.createElement("canvas");
+  canvas.width = width;
+  canvas.height = height;
+  const ctx = canvas.getContext("2d");
+  if (!ctx) return source;
+
+  ctx.drawImage(img, 0, 0, width, height);
+  return canvas.toDataURL("image/jpeg", UPLOAD_JPEG_QUALITY);
+}
 
 function availableCommitteeGroups(values: FormValues, field: CommitteeField) {
   const taken = new Set(
@@ -181,12 +220,33 @@ export function RegistrationFormV2() {
     setSubmitting(true);
     setServerError(null);
     try {
+      const payload = {
+        ...values,
+        // The Apps Script only stores the payment screenshot. Keeping the
+        // school ID image out of the POST body prevents Vercel's request-size
+        // guard from returning a plain-text "Request Entity Too Large" page.
+        schoolIdCard: values.schoolIdCard ? "uploaded" : "",
+      };
       const res = await fetch("/api/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(values),
+        body: JSON.stringify(payload),
       });
-      const json = await res.json();
+      const text = await res.text();
+      let json: { ok?: boolean; id?: string; error?: string } | null = null;
+      try {
+        json = text ? JSON.parse(text) : null;
+      } catch {
+        json = null;
+      }
+      if (!json) {
+        const friendly =
+          text.toLowerCase().includes("request entity too large") ||
+          text.toLowerCase().includes("payload too large")
+            ? "The uploaded images are too large. Please choose smaller screenshots and try again."
+            : "The registration server returned an unexpected response. Please try again.";
+        throw new Error(friendly);
+      }
       if (!res.ok || !json.ok) throw new Error(json.error || "Submission failed");
       const id = json.id ?? `LEG·${Math.random().toString(36).slice(2, 7).toUpperCase()}`;
       setSubmitted({
@@ -662,20 +722,22 @@ export function RegistrationFormV2() {
                         id="paymentScreenshot"
                         type="file"
                         accept="image/*"
-                        onChange={(e) => {
+                        onChange={async (e) => {
                           const file = e.target.files?.[0];
                           if (!file) return;
-                          if (file.size > 5 * 1024 * 1024) {
+                          if (file.size > MAX_UPLOAD_BYTES) {
                             alert("Please keep the screenshot under 5MB.");
                             e.target.value = "";
                             return;
                           }
-                          const reader = new FileReader();
-                          reader.onload = () => {
-                            set("paymentScreenshot", reader.result as string);
+                          try {
+                            const dataUrl = await prepareImageUpload(file);
+                            set("paymentScreenshot", dataUrl);
                             set("paymentScreenshotName", file.name);
-                          };
-                          reader.readAsDataURL(file);
+                          } catch {
+                            alert("Could not read this screenshot. Please choose another image.");
+                            e.target.value = "";
+                          }
                         }}
                       />
                       <span className="file-pick-icon" aria-hidden>↑</span>
@@ -714,20 +776,22 @@ export function RegistrationFormV2() {
                         id="schoolIdCard"
                         type="file"
                         accept="image/*"
-                        onChange={(e) => {
+                        onChange={async (e) => {
                           const file = e.target.files?.[0];
                           if (!file) return;
-                          if (file.size > 5 * 1024 * 1024) {
+                          if (file.size > MAX_UPLOAD_BYTES) {
                             alert("Please keep the image under 5MB.");
                             e.target.value = "";
                             return;
                           }
-                          const reader = new FileReader();
-                          reader.onload = () => {
-                            set("schoolIdCard", reader.result as string);
+                          try {
+                            const dataUrl = await prepareImageUpload(file);
+                            set("schoolIdCard", dataUrl);
                             set("schoolIdCardName", file.name);
-                          };
-                          reader.readAsDataURL(file);
+                          } catch {
+                            alert("Could not read this image. Please choose another image.");
+                            e.target.value = "";
+                          }
                         }}
                       />
                       <span className="file-pick-icon" aria-hidden>↑</span>
