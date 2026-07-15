@@ -133,6 +133,7 @@ export const COMMITTEES: Committee[] = [
     subtitle: "House",
     tier: "Intermediate",
     image: "/committees/loksabha.png",
+    studyGuides: [{ label: "Study Guide", href: "/study-guides/16_LOK_SABHA_Study_Guide.pdf" }],
     agenda:
       "Deliberating on the Nationwide Caste Census and its implications on the Reservation Policy.",
   },
