@@ -27,6 +27,7 @@ export function Colophon({ contextLine = "Edition 4" }: Props) {
             <Link href="/">Home</Link>
             <Link href="/about">Prelude · About</Link>
             <Link href="/committees">Committees</Link>
+            <Link href="/study-guides">Study Guides</Link>
             <Link href="/schedule">Schedule</Link>
             <Link href="/team">Secretariat</Link>
             <Link href="/venue">Venue · Travel</Link>
