@@ -122,9 +122,9 @@ img { display: block; max-width: 100%; }
   letter-spacing: 0;
   vertical-align: 0.05em;
 }
-.nav-links { display: flex; gap: 14px; justify-self: center; white-space: nowrap; }
+.nav-links { display: flex; gap: 22px; justify-self: center; white-space: nowrap; }
 .nav-links a {
-  font-size: 11.5px;
+  font-size: 13px;
   color: var(--ink);
   padding: 6px 0;
   border-bottom: 1px solid transparent;
@@ -149,7 +149,7 @@ img { display: block; max-width: 100%; }
   transition: background .2s;
 }
 .nav-cta:hover { background: var(--accent); }
-@media (max-width: 1080px) { .nav-links { display: none; } }
+@media (max-width: 1220px) { .nav-links { display: none; } }
 
 /* ────────────────────────────────────── HERO */
 .hero {
@@ -1322,6 +1322,7 @@ img { display: block; max-width: 100%; }
 .tier-nav .lbl {
   font-family: var(--font-mono), monospace; font-size: 10.5px;
   letter-spacing: 0.22em; text-transform: uppercase; color: var(--mute);
+  margin-left: 6px;
 }
 .tier-nav ul {
   display: flex; gap: 0; list-style: none; margin: 0; padding: 0;
@@ -1529,7 +1530,7 @@ img { display: block; max-width: 100%; }
   display: flex; align-items: center; justify-content: center;
   width: 96px; height: 72px;
 }
-.sg-row.classified .sg-emblem { background: var(--ink); }
+
 .sg-info { min-width: 0; }
 .sg-meta-row { display: flex; align-items: center; gap: 10px; margin-bottom: 4px; }
 .sg-code {
@@ -2585,10 +2586,10 @@ img { display: block; max-width: 100%; }
  * Desktop layouts above are untouched.
  * ──────────────────────────────────────────────────────────────── */
 
-/* Hamburger (hidden by default — shows ≤ 1080) */
+/* Hamburger (hidden by default — shows ≤ 1220) */
 .nav-toggle { display: none; }
 
-@media (max-width: 1080px) {
+@media (max-width: 1220px) {
   .nav-toggle {
     display: inline-grid;
     place-items: center;
