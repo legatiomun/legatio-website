@@ -84,8 +84,9 @@ img { display: block; max-width: 100%; }
 }
 .nav-inner {
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  grid-template-columns: auto 1fr auto;
   align-items: center;
+  column-gap: 24px;
   height: 68px;
 }
 .nav-brand { display: flex; align-items: center; gap: 12px; }
@@ -121,32 +122,34 @@ img { display: block; max-width: 100%; }
   letter-spacing: 0;
   vertical-align: 0.05em;
 }
-.nav-links { display: flex; gap: 22px; justify-self: center; }
+.nav-links { display: flex; gap: 14px; justify-self: center; white-space: nowrap; }
 .nav-links a {
-  font-size: 12.5px;
+  font-size: 11.5px;
   color: var(--ink);
   padding: 6px 0;
   border-bottom: 1px solid transparent;
   transition: border-color .25s;
 }
 .nav-links a:hover { border-color: var(--accent); }
-.nav-right { display: flex; justify-content: flex-end; align-items: center; gap: 18px; }
+.nav-right { display: flex; justify-content: flex-end; align-items: center; gap: 14px; }
 .nav-mono {
   font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 11px;
-  letter-spacing: 0.16em;
+  font-size: 10.5px;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--mute);
+  white-space: nowrap;
 }
 .nav-cta {
   display: inline-flex; align-items: center; gap: 10px;
   background: var(--ink); color: var(--paper);
-  padding: 10px 18px;
+  padding: 10px 16px;
   font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
+  white-space: nowrap;
   transition: background .2s;
 }
 .nav-cta:hover { background: var(--accent); }
-@media (max-width: 880px) { .nav-links { display: none; } }
+@media (max-width: 1080px) { .nav-links { display: none; } }
 
 /* ────────────────────────────────────── HERO */
 .hero {
@@ -2582,10 +2585,10 @@ img { display: block; max-width: 100%; }
  * Desktop layouts above are untouched.
  * ──────────────────────────────────────────────────────────────── */
 
-/* Hamburger (hidden by default — shows ≤ 880) */
+/* Hamburger (hidden by default — shows ≤ 1080) */
 .nav-toggle { display: none; }
 
-@media (max-width: 880px) {
+@media (max-width: 1080px) {
   .nav-toggle {
     display: inline-grid;
     place-items: center;
