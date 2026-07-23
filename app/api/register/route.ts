@@ -12,10 +12,18 @@ import { NextResponse } from "next/server";
  */
 
 export const runtime = "nodejs";
+const REGISTRATIONS_CLOSED = true;
 
 type Payload = Record<string, unknown>;
 
 export async function POST(req: Request) {
+  if (REGISTRATIONS_CLOSED) {
+    return NextResponse.json(
+      { ok: false, error: "Registrations are closed" },
+      { status: 410 },
+    );
+  }
+
   let body: Payload;
   try {
     body = await req.json();

@@ -2339,6 +2339,19 @@ img { display: block; max-width: 100%; }
 .success .actions a.secondary { border: 1px solid var(--line-2); color: var(--ink); }
 .success .actions a.secondary:hover { border-color: var(--ink); }
 
+.registration-closed { animation-delay: 120ms; }
+.registration-closed .seal {
+  font-family: var(--font-mono), monospace;
+  font-size: 18px;
+  letter-spacing: 0.08em;
+}
+.registration-closed .ref { color: var(--accent); }
+@media (max-width: 560px) {
+  .registration-closed { padding: 42px 22px; }
+  .registration-closed .actions { flex-direction: column; align-items: stretch; }
+  .registration-closed .actions a { justify-content: center; }
+}
+
 /* ────────────────────────────────────── CTA BANNER (sub-page bottom) */
 .cta-banner {
   background: var(--ink); color: var(--paper);
