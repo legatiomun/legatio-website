@@ -76,7 +76,7 @@ export function FAQList() {
                           transition={{ duration: 0.45, ease: [0.22, 0.8, 0.2, 1] }}
                           className="overflow-hidden"
                         >
-                          <p className="max-w-prose pb-8 pl-12 pr-12 font-serif text-[17px] leading-relaxed text-ink/80">
+                          <p className="max-w-prose whitespace-pre-line pb-8 pl-12 pr-12 font-serif text-[17px] leading-relaxed text-ink/80">
                             {item.a}
                           </p>
                         </motion.div>

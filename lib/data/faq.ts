@@ -55,7 +55,7 @@ export const FAQ_SECTIONS: FAQSection[] = [
       },
       {
         q: "What should I wear?",
-        a: "Day 1 (31st July 2026): Indian Traditionals. Day 2 (1st August 2026): Western Formals. Day 3 (2nd August 2026): Western Formals.",
+        a: "Day 1 (31st July 2026): Indian Traditionals.\nDay 2 (1st August 2026): Western Formals.\nDay 3 (2nd August 2026): Western Formals.",
       },
       {
         q: "What should I bring?",
