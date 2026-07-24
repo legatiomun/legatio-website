@@ -155,6 +155,7 @@ export const COMMITTEES: Committee[] = [
     subtitle: "Council",
     tier: "Advanced",
     image: "/committees/unsc-ctc.png",
+    studyGuides: [{ label: "Study Guide", href: "/study-guides/17_UNSC_CTC_Study_Guide.pdf" }],
     agenda:
       "Addressing the Expansion of Extremist Networks Through Encrypted Platforms and Emerging Technologies amid rising Proxy Warfare and Regional Conflicts.",
   },
