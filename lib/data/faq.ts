@@ -55,7 +55,7 @@ export const FAQ_SECTIONS: FAQSection[] = [
       },
       {
         q: "What should I wear?",
-        a: "The dress code for Legatio 4.0 will be announced shortly. Keep an eye on our official handles for the update.",
+        a: "Day 1 (31st July 2026): Indian Traditionals. Day 2 (1st August 2026): Western Formals. Day 3 (2nd August 2026): Western Formals.",
       },
       {
         q: "What should I bring?",
