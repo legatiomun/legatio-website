@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { ITINERARY, type Slot, type SessionKind } from "@/lib/data/itinerary";
 
-const ROMAN = ["I.", "II.", "III."];
+const ROMAN = ["I", "II", "III"];
 
 const TITLE_PARTS: Array<{ pre: string; em: string; post: string }> = [
   { pre: "", em: "The Conch", post: " Sounds" },
@@ -28,47 +28,31 @@ const KIND_LABEL: Record<SessionKind, string> = {
   dispersal: "Dispersal",
 };
 
-const KIND_VAR: Record<SessionKind, string> = {
-  registration: "var(--k-registration)",
-  meal: "var(--k-meal)",
-  ceremony: "var(--k-ceremony)",
-  committee: "var(--k-committee)",
-  panel: "var(--k-panel)",
-  press: "var(--k-press)",
-  social: "var(--k-social)",
-  dispersal: "var(--k-dispersal)",
-};
+/** Kinds that get a highlighted (tinted) row in the programme. */
+const FEATURED: SessionKind[] = ["ceremony", "panel", "press", "social"];
 
 function legendFor(slots: Slot[]): SessionKind[] {
-  const featured: SessionKind[] = ["ceremony", "press", "panel", "social", "committee"];
   const seen = new Set<SessionKind>();
-  for (const s of slots) {
-    if (featured.includes(s.kind)) seen.add(s.kind);
-    if (seen.size >= 3) break;
-  }
-  if (seen.size < 3) {
-    for (const s of slots) {
-      seen.add(s.kind);
-      if (seen.size >= 3) break;
-    }
-  }
-  return Array.from(seen).slice(0, 3);
+  for (const s of slots) seen.add(s.kind);
+  return Array.from(seen);
 }
 
 export function ScheduleTabs() {
   const [active, setActive] = useState(0);
-  const tabKeyRef = useRef(0);
+  const stageRef = useRef<HTMLElement | null>(null);
 
   function go(idx: number) {
     const next = Math.max(0, Math.min(ITINERARY.length - 1, idx));
+    if (next === active) return;
     setActive(next);
-    tabKeyRef.current += 1;
-    if (typeof window !== "undefined") {
-      window.scrollTo({ top: 200, behavior: "smooth" });
+    if (typeof window !== "undefined" && stageRef.current) {
+      const top =
+        stageRef.current.getBoundingClientRect().top + window.scrollY - 96;
+      window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
     }
   }
 
-  // Re-trigger animations when switching tabs
+  // Re-trigger entry animations when switching days
   const [animKey, setAnimKey] = useState(0);
   useEffect(() => {
     setAnimKey((k) => k + 1);
@@ -76,17 +60,17 @@ export function ScheduleTabs() {
 
   return (
     <>
-      {/* DAY TABS */}
-      <div className="day-tabs-wrap">
+      {/* DAY SELECTOR */}
+      <div className="sched-tabs-wrap">
         <div className="container">
-          <div className="day-tabs" role="tablist">
+          <div className="sched-tabs" role="tablist" aria-label="Conference days">
             {ITINERARY.map((d, i) => {
               const t = TITLE_PARTS[i];
               return (
                 <button
                   key={d.label}
                   id={`day-tab-${i + 1}`}
-                  className="tab"
+                  className="sched-tab"
                   role="tab"
                   type="button"
                   aria-selected={i === active}
@@ -97,28 +81,25 @@ export function ScheduleTabs() {
                     if (e.key === "ArrowLeft") go(i - 1);
                   }}
                 >
-                  <div className="num">
-                    Day {ROMAN[i]} · {d.weekday}
-                  </div>
-                  <div className="title">
+                  <span className="d-num">
+                    Day {ROMAN[i]}
+                    <span className="d-wd"> · {d.weekday}</span>
+                  </span>
+                  <span className="d-title">
                     {t.pre}
                     <em>{t.em}</em>
                     {t.post}
-                  </div>
-                  <div className="date">{d.date}</div>
+                  </span>
+                  <span className="d-date">{d.date}</span>
                 </button>
               );
             })}
-            <div
-              className="tab-indicator"
-              style={{ transform: `translateX(${active * 100}%)` }}
-            />
           </div>
         </div>
       </div>
 
       {/* DAY STAGE */}
-      <section className="day-stage">
+      <section className="day-stage" ref={stageRef}>
         <div className="container">
           {ITINERARY.map((d, i) => {
             const t = TITLE_PARTS[i];
@@ -133,7 +114,7 @@ export function ScheduleTabs() {
                 data-active={i === active ? "true" : undefined}
               >
                 <div className="day-head">
-                  <div className="roman">{ROMAN[i]}</div>
+                  <div className="roman">{ROMAN[i]}.</div>
                   <div>
                     <h2>
                       {t.em} {t.post.trim()}.
@@ -147,18 +128,26 @@ export function ScheduleTabs() {
                   </div>
                 </div>
 
-                <ol className="timeline">
+                <ol className="programme">
                   {d.slots.map((slot, si) => (
-                    <li key={si} className="slot" data-kind={slot.kind}>
-                      <div className="time">{slot.time}</div>
-                      <div className="axis">
-                        <span className="dot" />
-                      </div>
-                      <div className="ev">
+                    <li
+                      key={si}
+                      className="prog-row"
+                      data-kind={slot.kind}
+                      data-featured={
+                        FEATURED.includes(slot.kind) ? "true" : undefined
+                      }
+                      style={{ animationDelay: `${80 + si * 55}ms` }}
+                    >
+                      <div className="prog-time">{slot.time}</div>
+                      <div className="prog-body">
                         <h3>{slot.title}</h3>
                         {slot.detail && <p className="detail">{slot.detail}</p>}
                       </div>
-                      <span className="kind">{KIND_LABEL[slot.kind]}</span>
+                      <span className="prog-kind">
+                        <i className="prog-dot" aria-hidden="true" />
+                        {KIND_LABEL[slot.kind]}
+                      </span>
                     </li>
                   ))}
                 </ol>
@@ -166,8 +155,8 @@ export function ScheduleTabs() {
                 <div className="day-foot">
                   <div className="legend">
                     {legend.map((k) => (
-                      <span key={k}>
-                        <span className="swatch" style={{ background: KIND_VAR[k] }} />
+                      <span key={k} data-kind={k}>
+                        <i className="swatch" aria-hidden="true" />
                         {KIND_LABEL[k]}
                       </span>
                     ))}
@@ -179,7 +168,7 @@ export function ScheduleTabs() {
                       onClick={() => go(active - 1)}
                       disabled={active === 0}
                     >
-                      ← Previous
+                      {active > 0 ? `← Day ${ROMAN[active - 1]}` : "← Previous"}
                     </button>
                     <button
                       type="button"
@@ -187,7 +176,9 @@ export function ScheduleTabs() {
                       onClick={() => go(active + 1)}
                       disabled={active === ITINERARY.length - 1}
                     >
-                      Next →
+                      {active < ITINERARY.length - 1
+                        ? `Day ${ROMAN[active + 1]} →`
+                        : "Next →"}
                     </button>
                   </div>
                 </div>
