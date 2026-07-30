@@ -1640,11 +1640,13 @@ img { display: block; max-width: 100%; }
 .tab[aria-selected="true"] .num { color: var(--accent); }
 .tab[aria-selected="true"] .title { font-weight: 500; }
 @media (max-width: 720px) {
+  .day-tabs-wrap { position: static; }
   .day-tabs { grid-template-columns: 1fr; }
-  .tab { border-right: 0; border-bottom: 1px solid var(--line); }
+  .tab { border-right: 0; border-bottom: 1px solid var(--line); padding: 16px 20px; }
   .tab:last-child { border-bottom: 0; }
   .tab-indicator { display: none; }
   .tab[aria-selected="true"] { background: color-mix(in oklab, var(--accent) 8%, transparent); }
+  .tab .title { font-size: 18px; }
 }
 
 .day-stage {
@@ -2798,7 +2800,6 @@ img { display: block; max-width: 100%; }
   .tier-head .roman, .group-head .roman { font-size: clamp(64px, 18vw, 110px); }
 
   /* Schedule day tabs / day head */
-  .day-tabs-wrap { top: 64px; }
   .day-head { padding-bottom: 22px; margin-bottom: 28px; gap: 12px; }
   .day-head .roman { font-size: clamp(64px, 18vw, 110px); }
   .day-head h2 { font-size: clamp(30px, 9vw, 48px); }
